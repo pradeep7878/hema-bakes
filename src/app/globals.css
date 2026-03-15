@@ -1,42 +1,216 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root{
+--primary:#4b2815;
+--accent:#d9ba62;
+--green:#a3b76f;
+--bg:#f0f0db;
+--black:#000000;
+--font-sans:"Noto Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+--font-serif:"Cormorant Garamond", "Times New Roman", serif;
+--font-display:"Futura", "Trebuchet MS", "Segoe UI", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body{
+background:var(--bg);
+font-family:var(--font-sans);
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+html,body{
+height:100%;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.app-shell{
+min-height:100vh;
+display:flex;
+flex-direction:column;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+.app-main{
+flex:1 0 auto;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.navbar{
+background:#4b2815;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.navbar a{
+color:#d9ba62 !important;
+}
+
+.navbar .btn{
+color:#4b2815 !important;
+}
+
+.btn-primary{
+background:#4b2815;
+border:none;
+}
+
+.btn-primary:hover{
+background:#d9ba62;
+color:black;
+}
+
+.hero{
+background:linear-gradient(135deg, #f7f2e6 0%, #efe2c7 50%, #f0f0db 100%);
+border:1px solid rgba(75,40,21,0.1);
+border-radius:24px;
+padding:32px;
+box-shadow:0 10px 30px rgba(75,40,21,0.12);
+}
+
+.hero-eyebrow{
+text-transform:uppercase;
+letter-spacing:0.2em;
+font-size:0.75rem;
+color:#4b2815;
+margin-bottom:8px;
+}
+
+.hero-title{
+font-size:2.6rem;
+line-height:1.1;
+margin-bottom:12px;
+}
+
+.hero-subtitle{
+font-size:1.05rem;
+color:#4b2815;
+max-width:520px;
+}
+
+.hero-image-wrap{
+position:relative;
+padding:10px;
+background:radial-gradient(circle at top left, rgba(217,186,98,0.3), transparent 60%);
+border-radius:20px;
+}
+
+.hero-image{
+box-shadow:0 20px 40px rgba(0,0,0,0.12);
+transform:translateY(0);
+transition:transform 0.4s ease;
+}
+
+.hero-image:hover{
+transform:translateY(-6px);
+}
+
+.product-card{
+transition:transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
+aspect-ratio:1/1;
+display:flex;
+flex-direction:column;
+justify-content:flex-start;
+overflow:hidden;
+border:1px solid rgba(75,40,21,0.12);
+background:linear-gradient(180deg, #ffffff 0%, #f7f2e6 100%);
+}
+
+.product-card:hover{
+transform:translateY(-6px);
+box-shadow:0 16px 30px rgba(0,0,0,0.12);
+}
+
+.product-card-image{
+width:100%;
+height:58%;
+object-fit:cover;
+border-radius:16px;
+transition:transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
+}
+
+.product-card-body{
+display:flex;
+flex-direction:column;
+flex:1 1 auto;
+margin-top:12px;
+height:42%;
+}
+
+.product-card-title{
+font-size:1.05rem;
+line-height:1.2;
+min-height:2.5rem;
+color:#2b1a11;
+}
+
+.product-card-meta{
+display:flex;
+justify-content:space-between;
+font-size:0.8rem;
+color:#6b4a2f;
+}
+
+.product-card-category{
+background:#f0e0b6;
+padding:2px 8px;
+border-radius:999px;
+}
+
+.product-card-rating{
+font-weight:600;
+}
+
+.product-card-footer{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-top:auto;
+}
+
+.product-card:hover .product-card-image{
+transform:scale(1.04);
+filter:brightness(1.03);
+}
+
+.product-card-price{
+font-weight:700;
+color:#2b1a11;
+}
+
+.product-card .btn{
+color:#4b2815;
+border:1px solid #4b2815;
+background:transparent;
+}
+
+.reveal{
+opacity:0;
+transform:translateY(14px);
+animation:fadeUp 0.7s ease forwards;
+}
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@media (max-width: 768px){
+.hero{
+padding:24px;
+}
+.hero-title{
+font-size:2rem;
+}
+}
+
+.brand-font{
+font-family:var(--font-display);
+letter-spacing:0.04em;
+}
+
+h1,h2,h3,h4,h5,h6{
+font-family:var(--font-serif);
+}
+
+.footer{
+background:#4b2815;
+color:#d9ba62;
+margin-top:auto;
+}
+
+.footer .footer-brand{
+font-weight:700;
 }

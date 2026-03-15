@@ -1,0 +1,202 @@
+[
+  {
+    "_id": "b001",
+    "name": "Classic Fudge Brownie",
+    "price": 180,
+    "image": "https://images.pexels.com/photos/33674421/pexels-photo-33674421.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Classic",
+    "description": "Rich cocoa brownie with a glossy top and dense fudgy center.",
+    "rating": 4.7,
+    "inStock": true
+  },
+  {
+    "_id": "b002",
+    "name": "Walnut Crunch Brownie",
+    "price": 210,
+    "image": "https://images.pexels.com/photos/33674422/pexels-photo-33674422.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Nutty",
+    "description": "Toasted walnuts folded into a chewy chocolate base.",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "_id": "b003",
+    "name": "Salted Caramel Swirl",
+    "price": 230,
+    "image": "https://images.pexels.com/photos/33674420/pexels-photo-33674420.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Signature",
+    "description": "Buttery caramel ribbons with a pinch of sea salt.",
+    "rating": 4.8,
+    "inStock": true
+  },
+  {
+    "_id": "b004",
+    "name": "Triple Chocolate Chunk",
+    "price": 240,
+    "image": "https://images.pexels.com/photos/33312981/pexels-photo-33312981.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Chocolate",
+    "description": "Dark, milk, and white chocolate chunks in every bite.",
+    "rating": 4.9,
+    "inStock": true
+  },
+  {
+    "_id": "b005",
+    "name": "Espresso Mocha Brownie",
+    "price": 220,
+    "image": "https://images.pexels.com/photos/30924031/pexels-photo-30924031.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Coffee",
+    "description": "Bold espresso notes balanced with creamy cocoa.",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "_id": "b006",
+    "name": "Dark Chocolate Sea Salt",
+    "price": 200,
+    "image": "https://images.pexels.com/photos/30924033/pexels-photo-30924033.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Classic",
+    "description": "Intense dark chocolate with a crisp salt finish.",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "_id": "b007",
+    "name": "Hazelnut Praline Brownie",
+    "price": 260,
+    "image": "https://images.pexels.com/photos/30924034/pexels-photo-30924034.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Nutty",
+    "description": "Crunchy praline and roasted hazelnuts throughout.",
+    "rating": 4.7,
+    "inStock": true
+  },
+  {
+    "_id": "b008",
+    "name": "Almond Cocoa Bliss",
+    "price": 210,
+    "image": "https://images.pexels.com/photos/14565947/pexels-photo-14565947.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Nutty",
+    "description": "Light almond crunch with deep cocoa flavor.",
+    "rating": 4.4,
+    "inStock": true
+  },
+  {
+    "_id": "b009",
+    "name": "Peanut Butter Ripple",
+    "price": 240,
+    "image": "https://images.pexels.com/photos/14457503/pexels-photo-14457503.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Signature",
+    "description": "Creamy peanut butter swirled into chocolate batter.",
+    "rating": 4.8,
+    "inStock": true
+  },
+  {
+    "_id": "b010",
+    "name": "Biscoff Caramel Crunch",
+    "price": 250,
+    "image": "https://images.pexels.com/photos/33038498/pexels-photo-33038498.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Signature",
+    "description": "Spiced cookie crumble with a caramel drizzle.",
+    "rating": 4.7,
+    "inStock": true
+  },
+  {
+    "_id": "b011",
+    "name": "Black Forest Brownie",
+    "price": 260,
+    "image": "https://images.pexels.com/photos/6390639/pexels-photo-6390639.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Fruity",
+    "description": "Dark chocolate brownie with cherry compote notes.",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "_id": "b012",
+    "name": "Orange Zest Brownie",
+    "price": 220,
+    "image": "https://images.pexels.com/photos/29727285/pexels-photo-29727285.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Citrus",
+    "description": "Bright orange zest lifts the cocoa richness.",
+    "rating": 4.3,
+    "inStock": true
+  },
+  {
+    "_id": "b013",
+    "name": "Mint Choco Chip",
+    "price": 230,
+    "image": "https://images.pexels.com/photos/34601822/pexels-photo-34601822.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Signature",
+    "description": "Cool mint with dark chocolate chip pockets.",
+    "rating": 4.4,
+    "inStock": true
+  },
+  {
+    "_id": "b014",
+    "name": "Rose Pistachio Brownie",
+    "price": 280,
+    "image": "https://images.pexels.com/photos/29819836/pexels-photo-29819836.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Gourmet",
+    "description": "Delicate rose aroma with pistachio crunch.",
+    "rating": 4.6,
+    "inStock": true
+  },
+  {
+    "_id": "b015",
+    "name": "Coconut Cocoa Bar",
+    "price": 210,
+    "image": "https://images.pexels.com/photos/13215205/pexels-photo-13215205.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Tropical",
+    "description": "Toasted coconut flakes in a fudgy base.",
+    "rating": 4.2,
+    "inStock": true
+  },
+  {
+    "_id": "b016",
+    "name": "Raspberry Dark Brownie",
+    "price": 250,
+    "image": "https://images.pexels.com/photos/17488694/pexels-photo-17488694.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Fruity",
+    "description": "Tart raspberry notes with rich dark cocoa.",
+    "rating": 4.5,
+    "inStock": true
+  },
+  {
+    "_id": "b017",
+    "name": "Choco Lava Brownie",
+    "price": 270,
+    "image": "https://images.pexels.com/photos/17488696/pexels-photo-17488696.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Gourmet",
+    "description": "Molten center with a soft, cakey edge.",
+    "rating": 4.8,
+    "inStock": true
+  },
+  {
+    "_id": "b018",
+    "name": "Gulab Jamun Fusion",
+    "price": 290,
+    "image": "https://images.pexels.com/photos/19471408/pexels-photo-19471408.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Fusion",
+    "description": "Indian-inspired syrupy sweetness meets cocoa.",
+    "rating": 4.4,
+    "inStock": true
+  },
+  {
+    "_id": "b019",
+    "name": "Cardamom Cocoa Brownie",
+    "price": 240,
+    "image": "https://images.pexels.com/photos/17488699/pexels-photo-17488699.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Fusion",
+    "description": "Warm cardamom spice with deep chocolate.",
+    "rating": 4.3,
+    "inStock": true
+  },
+  {
+    "_id": "b020",
+    "name": "Honey Oat Brownie",
+    "price": 200,
+    "image": "https://images.pexels.com/photos/31643017/pexels-photo-31643017.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "category": "Wholesome",
+    "description": "Lightly sweetened with honey and rolled oats.",
+    "rating": 4.1,
+    "inStock": true
+  }
+]

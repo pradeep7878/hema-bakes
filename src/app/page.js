@@ -1,66 +1,61 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import ProductCard from "@/components/ProductCard"
+import products from "@/data.json"
 
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+export default async function Home(){
+
+return(
+
+<div>
+
+<section className="hero container mt-4 mb-5 reveal">
+<div className="row align-items-center g-4">
+<div className="col-md-7">
+<p className="hero-eyebrow">Small-batch • Freshly baked</p>
+<h1 className="hero-title">Elegant brownies, made in India</h1>
+<p className="hero-subtitle">
+Rich cocoa, slow-baked centers, and curated flavors for every craving.
+</p>
+<div className="d-flex gap-3 mt-3">
+<a className="btn btn-primary" href="#menu">Explore Menu</a>
+<a className="btn btn-outline-dark" href="/cart">View Cart</a>
+</div>
+</div>
+<div className="col-md-5">
+<div className="hero-image-wrap">
+<img
+src="https://images.pexels.com/photos/33674421/pexels-photo-33674421.jpeg?auto=compress&cs=tinysrgb&w=1200"
+alt="Brownies"
+className="img-fluid rounded-4 hero-image"
+/>
+</div>
+</div>
+</div>
+</section>
+
+<div className="container mt-5">
+
+<h1 id="menu" className="text-center mb-5 reveal">
+
+Fresh Homemade Brownies
+
+</h1>
+
+<div className="row">
+
+{products.map((p,i)=>(
+<div className="col-md-3 mb-4" key={p._id ?? i}>
+
+<ProductCard product={p} style={{animationDelay:`${i * 60}ms`}}/>
+
+</div>
+))}
+
+</div>
+
+</div>
+
+</div>
+
+)
+
 }
