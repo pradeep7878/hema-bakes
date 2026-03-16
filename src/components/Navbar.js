@@ -13,7 +13,7 @@ export default function Navbar() {
 
                 <Link href="/" className="navbar-brand text-warning fw-bold brand-font">
 
-                    HEMA BAKES
+                    PRADEEP BAKES
 
                 </Link>
              
