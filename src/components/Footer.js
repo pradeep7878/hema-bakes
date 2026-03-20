@@ -7,17 +7,23 @@ import Link from "next/link"
 export default function Footer() {
   const [showCallConfirm, setShowCallConfirm] = useState(false)
   const [showWaConfirm, setShowWaConfirm] = useState(false)
+  const [showMapConfirm, setShowMapConfirm] = useState(false)
   const callRef = useRef(null)
   const waRef = useRef(null)
+  const mapRef = useRef(null)
+
+  const closeAll = () => {
+    setShowCallConfirm(false)
+    setShowWaConfirm(false)
+    setShowMapConfirm(false)
+  }
 
   useEffect(() => {
     const handler = (e) => {
-      const clickedInsideCall = callRef.current?.contains(e.target)
-      const clickedInsideWa = waRef.current?.contains(e.target)
-      if (!clickedInsideCall && !clickedInsideWa) {
-        setShowCallConfirm(false)
-        setShowWaConfirm(false)
-      }
+      const insideCall = callRef.current?.contains(e.target)
+      const insideWa = waRef.current?.contains(e.target)
+      const insideMap = mapRef.current?.contains(e.target)
+      if (!insideCall && !insideWa && !insideMap) closeAll()
     }
     document.addEventListener("mousedown", handler)
     return () => document.removeEventListener("mousedown", handler)
@@ -27,8 +33,8 @@ export default function Footer() {
     <>
       {/* Full-screen backdrop – dims everything except the modal */}
       <div
-        className={`call-overlay ${showCallConfirm || showWaConfirm ? "is-open" : ""}`}
-        onClick={() => { setShowCallConfirm(false); setShowWaConfirm(false) }}
+        className={`call-overlay ${showCallConfirm || showWaConfirm || showMapConfirm ? "is-open" : ""}`}
+        onClick={closeAll}
         aria-hidden="true"
       />
       <footer className="footer mt-5">
@@ -84,9 +90,38 @@ export default function Footer() {
                   </div>
                 </div>
               </li>
-              <li className="align-items-start">
+              <li className="footer-call align-items-start" ref={mapRef}>
                 <FaMapMarkerAlt className="footer-icon mt-1" />
-                <span>27/10, Mathiyazhagan Nagar 1st street, Sulur, Coimbatore</span>
+                <button
+                  type="button"
+                  className="footer-contact-btn"
+                  onClick={() => { setShowMapConfirm((v) => !v); setShowCallConfirm(false); setShowWaConfirm(false) }}
+                  aria-expanded={showMapConfirm}
+                >
+                  27/10, Mathiyazhagan Nagar 1st street, Sulur, Coimbatore
+                </button>
+                <div
+                  className={`footer-call-modal map-modal ${showMapConfirm ? "is-open" : ""}`}
+                  role="dialog"
+                  aria-modal="true"
+                >
+                  <div className="footer-call-modal-title">Open in Maps?</div>
+                  <div className="footer-call-modal-text">27/10, Mathiyazhagan Nagar 1st street, Sulur, Coimbatore</div>
+                  <div className="footer-call-modal-actions">
+                    <a
+                      className="btn btn-primary"
+                      href="https://maps.app.goo.gl/Me3wEzuTDB21bhSeA"
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={closeAll}
+                    >
+                      Open Maps
+                    </a>
+                    <button type="button" className="btn btn-outline-light" onClick={closeAll}>
+                      Cancel
+                    </button>
+                  </div>
+                </div>
               </li>
               <li>
                 <FaEnvelope className="footer-icon" />

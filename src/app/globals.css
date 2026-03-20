@@ -136,7 +136,11 @@ body {
   padding: 4px 12px;
   border-radius: 999px;
   background:
-    radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.4), transparent 45%),
+    radial-gradient(
+      circle at 30% 40%,
+      rgba(255, 255, 255, 0.4),
+      transparent 45%
+    ),
     linear-gradient(135deg, rgba(191, 160, 94, 0.35), rgba(192, 108, 90, 0.25));
   color: #3b2416;
   font-weight: 700;
@@ -148,7 +152,6 @@ body {
   content: "🧡";
   font-size: 0.9em;
 }
-
 
 .app-shell {
   min-height: 100vh;
@@ -220,7 +223,9 @@ body {
   right: 0.9rem;
   transform: translateY(-50%) scale(0.6);
   opacity: 0;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .hero-menu-btn:hover::after {
@@ -238,7 +243,7 @@ body {
       rgba(0, 0, 0, 0.85) 100%
     ),
     url("https://images.pexels.com/photos/33674422/pexels-photo-33674422.jpeg?auto=compress&cs=tinysrgb&w=1800");
-    /* url("https://images.pexels.com/photos/28159488/pexels-photo-28159488.jpeg"); */
+  /* url("https://images.pexels.com/photos/28159488/pexels-photo-28159488.jpeg"); */
   background-size: cover;
   background-position: center;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -377,20 +382,31 @@ body {
   }
 }
 
-
-.ramzan-moon{
+.ramzan-moon {
   color: #006233;
-  font-size: 28px;
-  filter: drop-shadow(0 0 4px rgba(0, 98, 51, 0.45));
+  font-size: 52px;
+  filter: drop-shadow(0 0 6px rgba(0, 98, 51, 0.45));
 }
 
-.ramzan-star{
+.ramzan-star {
   color: #006233;
-  font-size: 18px;
-  margin-top: -10px;
-  filter: drop-shadow(0 0 3px rgba(0, 98, 51, 0.45));
+  font-size: 34px;
+  margin-top: -16px;
+  filter: drop-shadow(0 0 5px rgba(0, 98, 51, 0.45));
 }
 
+@media (max-width: 576px) {
+  .ramzan-moon {
+    font-size: 28px;
+    filter: drop-shadow(0 0 4px rgba(0, 98, 51, 0.45));
+  }
+
+  .ramzan-star {
+    font-size: 18px;
+    margin-top: -10px;
+    filter: drop-shadow(0 0 3px rgba(0, 98, 51, 0.45));
+  }
+}
 
 .preorder-form {
   max-width: 520px;
@@ -435,13 +451,15 @@ body {
 }
 
 .preorder-title.ramzan-title {
+
+
   font-family: var(--font-saleha);
-  font-size: clamp(2.2rem, 6vw, 3.8rem);
-  line-height: 1.15;
   color: #006233;
   text-shadow:
-    0 2px 12px rgba(0, 98, 51, 0.3),
-    0 4px 32px rgba(0, 98, 51, 0.15);
+    0 2px 12px #0062334d,
+    0 4px 32px #00623326;
+  font-size: clamp(1.8rem, 6vw, 3.8rem);
+  line-height: 1.65;
 }
 
 .preorder-copy {
@@ -486,64 +504,73 @@ body {
   color: #4b2815;
 }
 
-.preorder-slots{
+.preorder-slots {
   color: var(--plum-mauve);
-  font-weight:600;
-  text-align:center;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  text-transform:uppercase;
-  letter-spacing:0.08em;
-  font-size:0.75rem;
+  font-weight: 600;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
 }
 
-.preorder-heading{
+.preorder-heading {
   color: var(--plum-mauve);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  text-transform:uppercase;
-  letter-spacing:0.1em;
-  font-size:1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1.8rem;
   font-family: var(--font-sans);
-  animation:offerPulse 2.4s ease-in-out infinite;
+  animation: offerPulse 2.4s ease-in-out infinite;
 }
 
-.preorder-icon{
+.preorder-icon {
   color: var(--antique-gold);
 }
 
-.preorder-clock{
-  width:18px;
-  height:18px;
-  border-radius:50%;
-  border:2px solid var(--antique-gold);
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
+.preorder-clock {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--antique-gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-.preorder-needle{
-  width:1px;
-  height:7px;
-  background:var(--antique-gold);
-  position:absolute;
-  top:2px;
-  transform-origin:50% 90%;
-  animation:clockSpin 6s linear infinite;
+.preorder-needle {
+  width: 1px;
+  height: 7px;
+  background: var(--antique-gold);
+  position: absolute;
+  top: 2px;
+  transform-origin: 50% 90%;
+  animation: clockSpin 6s linear infinite;
 }
 
-@keyframes clockSpin{
-  to{ transform: rotate(360deg); }
+@keyframes clockSpin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-@keyframes offerPulse{
-  0%,100%{ opacity:1; transform:translateY(0); }
-  50%{ opacity:0.85; transform:translateY(-2px); }
+@keyframes offerPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translateY(-2px);
+  }
 }
 
 .preorder-table-section,
@@ -769,7 +796,7 @@ body {
 @keyframes maintenanceGlow {
   0%,
   100% {
-    box-shadow: 0 0 0 rgba(217, 186, 98, 0.0);
+    box-shadow: 0 0 0 rgba(217, 186, 98, 0);
   }
   50% {
     box-shadow: 0 0 18px rgba(217, 186, 98, 0.45);
@@ -1111,8 +1138,11 @@ h6 {
   bottom: calc(100% + 14px);
   transform: translateX(-50%) scale(0.6);
   transform-origin: center bottom;
+  display: block;
+  width: max-content;
   min-width: 270px;
   max-width: 320px;
+  height: auto;
   padding: 24px 26px 22px;
   border-radius: 24px;
   background: rgba(30, 14, 5, 0.92);
@@ -1184,8 +1214,11 @@ h6 {
     top: 50%;
     transform: translate(-50%, -50%) scale(0.6);
     transform-origin: center center;
-    min-width: min(290px, calc(100vw - 32px));
-    max-width: calc(100vw - 32px);
+    /* explicit width so height is always content-driven */
+    width: calc(100vw - 32px);
+    min-width: unset;
+    max-width: unset;
+    height: auto;
   }
 
   .footer-call-modal.is-open {
@@ -1196,9 +1229,21 @@ h6 {
     display: none;
   }
 
-  /* WhatsApp modal inherits the above; reset wrap-specific overrides */
+  /*
+   * Use 50vw/50vh (viewport units) instead of 50% so centering always
+   * resolves against the viewport — not the tiny fixed FAB parent.
+   * This fixes iOS Safari where % inside position:fixed resolves to parent.
+   */
   .whatsapp-fab-wrap .wa-modal {
+    position: fixed;
+    left: 50vw;
     right: auto;
+    top: 50vh;
+    bottom: auto;
+    width: calc(100vw - 32px);
+    min-width: unset;
+    max-width: unset;
+    height: auto;
     transform: translate(-50%, -50%) scale(0.6);
     transform-origin: center center;
   }
@@ -1278,17 +1323,24 @@ h6 {
   z-index: 1001;
 }
 
-/* WhatsApp modal sits above the FAB */
-.whatsapp-fab-wrap .wa-modal {
-  bottom: calc(100% + 14px);
-  left: auto;
-  right: 0;
-  transform: translateX(0) scale(0.6);
-  transform-origin: right bottom;
-}
+/* WhatsApp modal sits above the FAB — desktop only.
+   Scoped to min-width:769px so these rules never override
+   the mobile media-query overrides above (same specificity,
+   last-in-file wins, which was causing the mobile modal to
+   sit off-screen above the viewport). */
+@media (min-width: 769px) {
+  .whatsapp-fab-wrap .wa-modal {
+    top: 0;
+    bottom: auto;
+    left: auto;
+    right: 0;
+    transform-origin: right bottom;
+    transform: translateY(calc(-100% - 14px)) scale(0.6);
+  }
 
-.whatsapp-fab-wrap .wa-modal.is-open {
-  transform: translateX(0) scale(1);
+  .whatsapp-fab-wrap .wa-modal.is-open {
+    transform: translateY(calc(-100% - 14px)) scale(1);
+  }
 }
 
 .whatsapp-fab-wrap .wa-modal::before {
@@ -1307,6 +1359,7 @@ h6 {
   background: #0a6e38;
   border-color: #0a6e38;
 }
+
 
 .whatsapp-fab {
   position: relative;

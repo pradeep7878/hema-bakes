@@ -174,7 +174,7 @@ export default function HomePageContent() {
 
                     <div className="preorder-premium ">
                         <div className="ramzan-header text-center my-4">
-                        <p className="preorder-kicker mb-5">Reserve your brownie for March 21</p>
+                        <p className="preorder-kicker mb-5">Reserve your brownie for March 27</p>
                         <h2 className="preorder-title ramzan-title d-flex align-items-center justify-content-center gap-2 flex-wrap">
                             <FaMoon className="ramzan-moon" />
                             Ramzan Pre-Order Offer
