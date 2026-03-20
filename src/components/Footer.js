@@ -8,14 +8,17 @@ export default function Footer() {
   const [showCallConfirm, setShowCallConfirm] = useState(false)
   const [showWaConfirm, setShowWaConfirm] = useState(false)
   const [showMapConfirm, setShowMapConfirm] = useState(false)
+  const [showEmailConfirm, setShowEmailConfirm] = useState(false)
   const callRef = useRef(null)
   const waRef = useRef(null)
   const mapRef = useRef(null)
+  const emailRef = useRef(null)
 
   const closeAll = () => {
     setShowCallConfirm(false)
     setShowWaConfirm(false)
     setShowMapConfirm(false)
+    setShowEmailConfirm(false)
   }
 
   useEffect(() => {
@@ -23,7 +26,8 @@ export default function Footer() {
       const insideCall = callRef.current?.contains(e.target)
       const insideWa = waRef.current?.contains(e.target)
       const insideMap = mapRef.current?.contains(e.target)
-      if (!insideCall && !insideWa && !insideMap) closeAll()
+      const insideEmail = emailRef.current?.contains(e.target)
+      if (!insideCall && !insideWa && !insideMap && !insideEmail) closeAll()
     }
     document.addEventListener("mousedown", handler)
     return () => document.removeEventListener("mousedown", handler)
@@ -33,7 +37,7 @@ export default function Footer() {
     <>
       {/* Full-screen backdrop – dims everything except the modal */}
       <div
-        className={`call-overlay ${showCallConfirm || showWaConfirm || showMapConfirm ? "is-open" : ""}`}
+        className={`call-overlay ${showCallConfirm || showWaConfirm || showMapConfirm || showEmailConfirm ? "is-open" : ""}`}
         onClick={closeAll}
         aria-hidden="true"
       />
@@ -123,9 +127,28 @@ export default function Footer() {
                   </div>
                 </div>
               </li>
-              <li>
+              <li className="footer-call" ref={emailRef}>
                 <FaEnvelope className="footer-icon" />
-                <a href="mailto:hb.hemabakes@gmail.com">hb.hemabakes@gmail.com</a>
+                <button
+                  type="button"
+                  className="footer-contact-btn"
+                  onClick={() => { setShowEmailConfirm((v) => !v); setShowCallConfirm(false); setShowWaConfirm(false); setShowMapConfirm(false) }}
+                  aria-expanded={showEmailConfirm}
+                >
+                  hb.hemabakes@gmail.com
+                </button>
+                <div
+                  className={`footer-call-modal ${showEmailConfirm ? "is-open" : ""}`}
+                  role="dialog"
+                  aria-modal="true"
+                >
+                  <div className="footer-call-modal-title">Send an Email?</div>
+                  <div className="footer-call-modal-text">hb.hemabakes@gmail.com</div>
+                  <div className="footer-call-modal-actions">
+                    <a className="btn btn-primary" href="mailto:hb.hemabakes@gmail.com" onClick={closeAll}>Send Email</a>
+                    <button type="button" className="btn btn-outline-light" onClick={closeAll}>Cancel</button>
+                  </div>
+                </div>
               </li>
             </ul>
             {/* <div className="footer-social">
