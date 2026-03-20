@@ -1,5 +1,6 @@
 "use client"
 
+import MaintenancePage from "@/components/MaintenancePage"
 import ProductCard from "@/components/ProductCard"
 import products from "@/data.json"
 import { useEffect, useMemo, useRef, useState } from "react"
@@ -12,7 +13,7 @@ const SHEET_NAME = "ramzan_customers"
 const UPI_ID = "9698584991sbi@ybl"
 const AMOUNT_PAID = 1
 
-export default function Home() {
+function HomePageContent() {
     const [name, setName] = useState("")
     const [phone, setPhone] = useState("")
     const [address, setAddress] = useState("")
@@ -182,7 +183,7 @@ export default function Home() {
 
                                 </h2>
 
-                                <p className="preorder-copy mt-5">
+                                <p className="preorder-copy mt-5 mt-lg-5">
                                     Normal brownie price is <strong>₹220</strong>. On <strong>21 March</strong>, the price is
                                     <strong> ₹180</strong>.
                                 </p>
@@ -377,4 +378,8 @@ export default function Home() {
 
     )
 
+}
+
+export default function Home() {
+    return <MaintenancePage />
 }

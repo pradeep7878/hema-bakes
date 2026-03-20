@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" aria-hidden="true">
+  <defs>
+    <linearGradient id="cookieGlow" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f6deb6"/>
+      <stop offset="100%" stop-color="#e8c28b"/>
+    </linearGradient>
+  </defs>
+  <rect width="220" height="220" fill="none"/>
+  <g transform="translate(18 18)">
+    <circle cx="92" cy="102" r="78" fill="url(#cookieGlow)" stroke="#c79a5b" stroke-width="4"/>
+    <circle cx="60" cy="82" r="8" fill="#b97943"/>
+    <circle cx="118" cy="72" r="7" fill="#b97943"/>
+    <circle cx="128" cy="118" r="9" fill="#b97943"/>
+    <circle cx="74" cy="130" r="6" fill="#b97943"/>
+    <circle cx="96" cy="104" r="5" fill="#b97943"/>
+    <path d="M60 112c8 10 18 14 32 14s24-4 32-14" fill="none" stroke="#6b3f1d" stroke-linecap="round" stroke-width="5"/>
+    <g transform="translate(28 118)">
+      <path d="M24 14h80c-4 24-18 38-40 38s-36-14-40-38z" fill="#ffffff" stroke="#d4b08a" stroke-width="3"/>
+      <path d="M36 14c6 10 16 16 28 16s22-6 28-16" fill="none" stroke="#c79a5b" stroke-width="3" stroke-linecap="round"/>
+      <rect x="76" y="-4" width="46" height="8" rx="4" fill="#c79a5b"/>
+      <rect x="98" y="-12" width="10" height="18" rx="5" fill="#c79a5b"/>
+    </g>
+    <circle cx="70" cy="98" r="6" fill="#3b2416"/>
+    <circle cx="114" cy="98" r="6" fill="#3b2416"/>
+    <g transform="translate(28 -2)">
+      <path d="M40 58c0-18 14-32 32-32s32 14 32 32v8H40v-8z" fill="#ffffff" stroke="#d7d7d7" stroke-width="3"/>
+      <rect x="28" y="60" width="88" height="18" rx="9" fill="#ffffff" stroke="#d7d7d7" stroke-width="3"/>
+    </g>
+    <path d="M18 52c6-10 16-16 28-16" fill="none" stroke="#f3b5b5" stroke-linecap="round" stroke-width="4"/>
+    <path d="M150 52c-6-10-16-16-28-16" fill="none" stroke="#f3b5b5" stroke-linecap="round" stroke-width="4"/>
+  </g>
+</svg>
