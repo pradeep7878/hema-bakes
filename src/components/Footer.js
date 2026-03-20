@@ -1,9 +1,37 @@
+"use client"
+
+import { useState, useEffect, useRef } from "react"
 import { FaPhoneAlt, FaMapMarkerAlt, FaEnvelope, FaInstagram, FaFacebookF, FaTwitter, FaHome, FaShoppingCart, FaUser, FaWhatsapp, FaListUl } from "react-icons/fa"
 import Link from "next/link"
 
 export default function Footer() {
+  const [showCallConfirm, setShowCallConfirm] = useState(false)
+  const [showWaConfirm, setShowWaConfirm] = useState(false)
+  const callRef = useRef(null)
+  const waRef = useRef(null)
+
+  useEffect(() => {
+    const handler = (e) => {
+      const clickedInsideCall = callRef.current?.contains(e.target)
+      const clickedInsideWa = waRef.current?.contains(e.target)
+      if (!clickedInsideCall && !clickedInsideWa) {
+        setShowCallConfirm(false)
+        setShowWaConfirm(false)
+      }
+    }
+    document.addEventListener("mousedown", handler)
+    return () => document.removeEventListener("mousedown", handler)
+  }, [])
+
   return (
-    <footer className="footer mt-5">
+    <>
+      {/* Full-screen backdrop – dims everything except the modal */}
+      <div
+        className={`call-overlay ${showCallConfirm || showWaConfirm ? "is-open" : ""}`}
+        onClick={() => { setShowCallConfirm(false); setShowWaConfirm(false) }}
+        aria-hidden="true"
+      />
+      <footer className="footer mt-5">
       <div className="container pt-5 pb-3">
         <div className="row g-4 align-items-start">
           <div className="col-md-9">
@@ -22,16 +50,43 @@ export default function Footer() {
             </ul>
           </div> */}
 
-          <div className="col-md-3 d-flex flex-column ">
+          <div className="col-md-3 d-flex flex-column  ">
             <div className="footer-title">Contact</div>
             <ul className="footer-contact list-unstyled ">
-              <li>
+              <li className="footer-call" ref={callRef}>
                 <FaPhoneAlt className="footer-icon" />
-                <a href="tel:+919698584991">+91 96985 84991</a>
+                <button
+                  type="button"
+                  className="footer-contact-btn"
+                  onClick={() => { setShowCallConfirm((v) => !v); setShowWaConfirm(false) }}
+                  aria-expanded={showCallConfirm}
+                  aria-controls="footer-call-confirm"
+                >
+                  +91 96985 84991
+                </button>
+                <div
+                  id="footer-call-confirm"
+                  className={`footer-call-modal ${showCallConfirm ? "is-open" : ""}`}
+                  role="dialog"
+                  aria-modal="true"
+                >
+                  <div className="footer-call-modal-title">Call Hema Bakes?</div>
+                  <div className="footer-call-modal-text">+91 96985 84991</div>
+                  <div className="footer-call-modal-actions">
+                    <a className="btn btn-primary" href="tel:+919698584991">Call Now</a>
+                    <button
+                      type="button"
+                      className="btn btn-outline-light"
+                      onClick={() => setShowCallConfirm(false)}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
               </li>
-              <li>
-                <FaMapMarkerAlt className="footer-icon" />
-                <span>Coimbatore, Tamil Nadu, India</span>
+              <li className="align-items-start">
+                <FaMapMarkerAlt className="footer-icon mt-1" />
+                <span>27/10, Mathiyazhagan Nagar 1st street, Sulur, Coimbatore</span>
               </li>
               <li>
                 <FaEnvelope className="footer-icon" />
@@ -61,15 +116,39 @@ export default function Footer() {
         <FaListUl />
         <span>Menu</span>
       </a>
-      <a
-        className="whatsapp-fab"
-        href="https://wa.me/919698584991?text=Hello%20Hema%20Bakes%2C%20I%20want%20to%20order%20brownies."
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Chat on WhatsApp"
-      >
-        <FaWhatsapp />
-      </a>
-    </footer>
+      <div className="whatsapp-fab-wrap" ref={waRef}>
+        <button
+          type="button"
+          className="whatsapp-fab"
+          aria-label="Chat on WhatsApp"
+          onClick={() => { setShowWaConfirm((v) => !v); setShowCallConfirm(false) }}
+        >
+          <FaWhatsapp />
+        </button>
+        <div className={`footer-call-modal wa-modal ${showWaConfirm ? "is-open" : ""}`} role="dialog" aria-modal="true">
+          <div className="footer-call-modal-title">Chat on WhatsApp</div>
+          <div className="footer-call-modal-text">Order brownies via WhatsApp!</div>
+          <div className="footer-call-modal-actions">
+            <a
+              className="btn btn-primary"
+              href="https://wa.me/919698584991?text=Hello%20Hema%20Bakes%2C%20I%20want%20to%20order%20brownies."
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setShowWaConfirm(false)}
+            >
+              Open WhatsApp
+            </a>
+            <button
+              type="button"
+              className="btn btn-outline-light"
+              onClick={() => setShowWaConfirm(false)}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+      </footer>
+    </>
   )
 }

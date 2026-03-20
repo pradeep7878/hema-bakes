@@ -13,7 +13,7 @@ const SHEET_NAME = "ramzan_customers"
 const UPI_ID = "9698584991sbi@ybl"
 const AMOUNT_PAID = 1
 
-function HomePageContent() {
+export default function HomePageContent() {
     const [name, setName] = useState("")
     const [phone, setPhone] = useState("")
     const [address, setAddress] = useState("")
@@ -169,19 +169,20 @@ function HomePageContent() {
             <div className="container mt-5">
 
                 <section className="preorder-note mb-5 ">
+
+                    
+
                     <div className="preorder-premium ">
+                        <div className="ramzan-header text-center my-4">
+                        <p className="preorder-kicker mb-5">Reserve your brownie for March 21</p>
+                        <h2 className="preorder-title ramzan-title d-flex align-items-center justify-content-center gap-2 flex-wrap">
+                            <FaMoon className="ramzan-moon" />
+                            Ramzan Pre-Order Offer
+                            <FaStar className="ramzan-star" />
+                        </h2>
+                    </div>
                         <div className="row g-4 align-items-center p-0 p-md-5">
                             <div className="col-12 col-lg-7">
-
-                                <p className="preorder-kicker">Reserve your brownie for March 21</p>
-
-                                <h2 className="preorder-title ramzan-title d-flex align-items-center gap-2">
-
-                                    <FaMoon className="ramzan-moon" />
-                                    Ramzan Pre-Order Offer
-                                    <FaStar className="ramzan-star" />
-
-                                </h2>
 
                                 <p className="preorder-copy mt-5 mt-lg-5">
                                     Normal brownie price is <strong>₹220</strong>. On <strong>21 March</strong>, the price is
@@ -380,6 +381,6 @@ function HomePageContent() {
 
 }
 
-export default function Home() {
-    return <MaintenancePage />
-}
+// export default function Home() {
+//     return <MaintenancePage />
+// }

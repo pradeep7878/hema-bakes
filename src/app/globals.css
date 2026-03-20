@@ -17,6 +17,7 @@
   --font-serif: "Cormorant Garamond", "Times New Roman", serif;
   --font-display: "Futura", "Trebuchet MS", "Segoe UI", sans-serif;
   --font-arabic: "Marhey", cursive;
+  --font-noto: var(--font-noto), "Noto Sans", sans-serif;
 }
 
 body {
@@ -378,14 +379,16 @@ body {
 
 
 .ramzan-moon{
-color:#13805A;
-font-size:28px;
+  color: #006233;
+  font-size: 28px;
+  filter: drop-shadow(0 0 4px rgba(0, 98, 51, 0.45));
 }
 
 .ramzan-star{
-color:#13805A;
-font-size:18px;
-margin-top:-10px;
+  color: #006233;
+  font-size: 18px;
+  margin-top: -10px;
+  filter: drop-shadow(0 0 3px rgba(0, 98, 51, 0.45));
 }
 
 
@@ -407,15 +410,21 @@ margin-top:-10px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
 
-.preorder-kicker {
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.7rem;
-  color: #6b4a2f;
-  margin-bottom: 8px;
+.ramzan-header {
+  padding: 0 16px;
 }
 
-.ramzan-title{
+.preorder-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #006233;
+  margin-bottom: 12px;
+  text-shadow: 0 1px 6px rgba(0, 98, 51, 0.2);
+}
+
+.ramzan-title {
   letter-spacing: 0.02em;
 }
 
@@ -426,7 +435,13 @@ margin-top:-10px;
 }
 
 .preorder-title.ramzan-title {
-  font-family: var(--font-sans);
+  font-family: var(--font-saleha);
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  line-height: 1.15;
+  color: #006233;
+  text-shadow:
+    0 2px 12px rgba(0, 98, 51, 0.3),
+    0 4px 32px rgba(0, 98, 51, 0.15);
 }
 
 .preorder-copy {
@@ -531,6 +546,13 @@ margin-top:-10px;
   50%{ opacity:0.85; transform:translateY(-2px); }
 }
 
+.preorder-table-section,
+.preorder-table table,
+.preorder-table th,
+.preorder-table td {
+  font-family: var(--font-noto);
+}
+
 .preorder-table-section {
   margin: 40px 0 20px;
   /* background: #f7f2e6; */
@@ -597,7 +619,7 @@ margin-top:-10px;
 .preorder-table td,
 .preorder-table th {
   padding: 14px 16px;
-  font-family: var(--font-display);
+  font-family: var(--font-noto);
 }
 
 .preorder-table {
@@ -951,6 +973,11 @@ h6 {
   background: #4b2815;
   color: #d9ba62;
   margin-top: auto;
+  font-family: var(--font-noto);
+}
+
+.footer-call-modal {
+  font-family: var(--font-noto);
 }
 
 .footer .footer-brand {
@@ -999,12 +1026,198 @@ h6 {
 .footer-contact a {
   color: inherit;
   text-decoration: none;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  cursor: pointer;
+  display: inline-flex;
+}
+
+.footer-contact-btn {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  cursor: pointer;
+}
+
+.footer-contact span {
+  color: inherit;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  cursor: pointer;
+  display: inline-flex;
 }
 
 .footer-contact a:hover {
-  color: inherit;
+  color: #a3b76f;
   text-decoration: none;
   opacity: 0.9;
+  transform: translateX(4px);
+}
+
+.footer-contact-btn:hover {
+  color: #a3b76f;
+  opacity: 0.9;
+  transform: translateX(4px);
+}
+
+.footer-contact li:hover span {
+  color: #a3b76f;
+  opacity: 0.9;
+  transform: translateX(4px);
+}
+
+/* Full-screen backdrop */
+.call-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  z-index: 1000;
+  pointer-events: none;
+  transition:
+    background 0.3s ease,
+    backdrop-filter 0.3s ease;
+}
+
+.call-overlay.is-open {
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  pointer-events: auto;
+}
+
+.footer-call {
+  position: relative;
+}
+
+.footer-call-modal {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 14px);
+  transform: translateX(-50%) scale(0.6);
+  transform-origin: center bottom;
+  min-width: 270px;
+  max-width: 320px;
+  padding: 24px 26px 22px;
+  border-radius: 24px;
+  background: rgba(30, 14, 5, 0.92);
+  backdrop-filter: blur(18px) saturate(1.6);
+  -webkit-backdrop-filter: blur(18px) saturate(1.6);
+  border: 1px solid rgba(255, 220, 140, 0.28);
+  color: #f3e6c7;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    0 1.5px 0 rgba(255, 220, 140, 0.18) inset;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition:
+    opacity 0.22s ease,
+    transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1.2),
+    z-index 0s 0.22s;
+}
+
+.footer-call-modal.is-open {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  pointer-events: auto;
+  z-index: 1001;
+  transition:
+    opacity 0.22s ease,
+    transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1.2),
+    z-index 0s 0s;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    0 0 0 1.5px rgba(255, 220, 140, 0.5),
+    0 0 32px rgba(255, 200, 80, 0.25);
+}
+
+/* Arrow pointing DOWN toward the number */
+.footer-call-modal::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -9px;
+  transform: translateX(-50%) rotate(45deg);
+  width: 14px;
+  height: 14px;
+  background: rgba(30, 14, 5, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-right: 1px solid rgba(255, 220, 140, 0.28);
+  border-bottom: 1px solid rgba(255, 220, 140, 0.28);
+}
+
+.footer-call-modal-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #ffecc2;
+  margin-bottom: 8px;
+}
+
+.footer-call-modal-text {
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* ── Mobile: centre both modals in viewport ─────────────── */
+@media (max-width: 768px) {
+  .footer-call-modal {
+    position: fixed;
+    left: 50%;
+    bottom: auto;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.6);
+    transform-origin: center center;
+    min-width: min(290px, calc(100vw - 32px));
+    max-width: calc(100vw - 32px);
+  }
+
+  .footer-call-modal.is-open {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .footer-call-modal::before {
+    display: none;
+  }
+
+  /* WhatsApp modal inherits the above; reset wrap-specific overrides */
+  .whatsapp-fab-wrap .wa-modal {
+    right: auto;
+    transform: translate(-50%, -50%) scale(0.6);
+    transform-origin: center center;
+  }
+
+  .whatsapp-fab-wrap .wa-modal.is-open {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.footer-call-modal-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.footer-call-modal .btn {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.85rem;
 }
 
 .footer-contact.text-md-end li {
@@ -1058,10 +1271,49 @@ h6 {
   }
 }
 
-.whatsapp-fab {
+.whatsapp-fab-wrap {
   position: fixed;
   right: 18px;
   bottom: 18px;
+  z-index: 1001;
+}
+
+/* WhatsApp modal sits above the FAB */
+.whatsapp-fab-wrap .wa-modal {
+  bottom: calc(100% + 14px);
+  left: auto;
+  right: 0;
+  transform: translateX(0) scale(0.6);
+  transform-origin: right bottom;
+}
+
+.whatsapp-fab-wrap .wa-modal.is-open {
+  transform: translateX(0) scale(1);
+}
+
+.whatsapp-fab-wrap .wa-modal::before {
+  left: auto;
+  right: 14px;
+  transform: rotate(45deg);
+}
+
+/* WhatsApp "Call Now" button → green */
+.wa-modal .btn-primary {
+  background: #128c4a;
+  border-color: #128c4a;
+}
+
+.wa-modal .btn-primary:hover {
+  background: #0a6e38;
+  border-color: #0a6e38;
+}
+
+.whatsapp-fab {
+  position: relative;
+  right: auto;
+  bottom: auto;
+  border: none;
+  cursor: pointer;
   background: #25d366;
   color: #ffffff;
   padding: 12px 16px;
