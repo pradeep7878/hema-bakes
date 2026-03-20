@@ -31,16 +31,18 @@ export default function Home() {
     const startPayment = () => {
         setStatus("")
         if (!name || !phone || !address) {
-            setStatus("Please fill all details before paying.")
+            toast.error("Please fill all details", { autoClose: 5000 })
+            return
+        }
+        if (!/^[0-9]{10}$/.test(phone.trim())) {
+            toast.error("Invalid phone number", { autoClose: 5000 })
+            return
+        }
+        if (preorders.length >= 10) {
+            toast.error("Pre‑orders full (10/10)", { autoClose: 5000 })
             return
         }
         setShowPay(true)
-        if (typeof window !== "undefined") {
-            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
-            if (isMobile) {
-                window.location.href = upiLink
-            }
-        }
     }
 
     const saveToSheet = async () => {
@@ -153,7 +155,7 @@ export default function Home() {
                         <p className="hero-subtitle hero-fade delay-3">
                             For Sweet cravings and Happy Smiles
                         </p>
-                        <div className="d-flex gap-3 mt-3 justify-content-center hero-fade delay-4">
+                        <div className="d-flex gap-3 mt-4 justify-content-center hero-fade delay-4">
                             <a className="btn btn-primary hero-menu-btn" href={menuPdfUrl} target="_blank" rel="noreferrer">
                                 Explore Menu
                             </a>
@@ -167,7 +169,7 @@ export default function Home() {
 
                 <section className="preorder-note mb-5 ">
                     <div className="preorder-premium ">
-                        <div className="row g-4 align-items-center p-2 p-md-5">
+                        <div className="row g-4 align-items-center p-0 p-md-5">
                             <div className="col-12 col-lg-7">
 
                                 <p className="preorder-kicker">Reserve your brownie for March 21</p>
@@ -187,7 +189,7 @@ export default function Home() {
 
                                 <p className="preorder-copy">
                                     You can pre-order now by paying just <strong>₹1</strong> and pay the remaining
-                                    <strong> ₹143</strong> on delivery.
+                                    <span className="heart-badge ms-1">₹143</span> on delivery.
                                 </p>
                                 <div className="preorder-visual mt-5">
                                     <div id="preorderCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
@@ -267,24 +269,24 @@ export default function Home() {
                                         />
                                         <label>Address</label>
                                     </div>
-                                    <button className="btn btn-primary w-100 d-flex align-items-center justify-content-center gap-2" onClick={saveToSheet} disabled={saving}>
-                                        {saving && <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>}
-                                        <span>{saving ? "Saving..." : "Save to sheet"}</span>
+                                    <button className="btn btn-primary w-100" onClick={startPayment} disabled={saving}>
+                                        Pay ₹{AMOUNT_PAID} Pre‑Order
                                     </button>
-                                    {/* <button className="btn btn-primary w-100" onClick={startPayment}>
-                                    Pay ₹{AMOUNT_PAID} Pre‑Order
-                                </button> */}
-                                    {/* {showPay && (
+                                    {showPay && (
                                     <>
                                         <div className="preorder-qr mt-3">
-                                            <p className="small mb-2">Scan to pay if app didn’t open</p>
+                                            <p className="small mb-2">Scan the QR or use your UPI app to pay ₹{AMOUNT_PAID}</p>
                                             <QRCodeCanvas value={upiLink} size={160} />
                                         </div>
-                                        <button className="btn btn-outline-light w-100 mt-3" onClick={saveToSheet} disabled={saving}>
-                                            {saving ? "Saving..." : "I Paid ₹1"}
+                                        <a className="btn btn-primary w-100 mt-3" href={upiLink}>
+                                            Pay in UPI App
+                                        </a>
+                                        <button className="btn btn-primary w-100 mt-3 d-flex align-items-center justify-content-center gap-2" onClick={saveToSheet} disabled={saving}>
+                                            {saving && <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>}
+                                            <span>{saving ? "Saving..." : "I Paid ₹1"}</span>
                                         </button>
                                     </>
-                                )} */}
+                                )}
                                     {status && (
                                         <div className={`alert ${status.startsWith("Saved") ? "alert-success" : "alert-danger"} mt-3 mb-0`} role="alert">
                                             {status}
@@ -297,7 +299,7 @@ export default function Home() {
 
 
                         {preorders.length > 0 && (
-                            <div className="preorder-table-section" ref={tableRef}>
+                            <div className="preorder-table-section px-0 px-md-3" ref={tableRef}>
                                 <h3 className="mb-3 text-center preorder-heading">
                                     Pre‑Ordered Customers
                                 </h3>

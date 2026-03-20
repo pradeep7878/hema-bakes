@@ -1,4 +1,4 @@
-import { FaPhoneAlt, FaMapMarkerAlt, FaEnvelope, FaInstagram, FaFacebookF, FaTwitter, FaHome, FaShoppingCart, FaUser, FaWhatsapp } from "react-icons/fa"
+import { FaPhoneAlt, FaMapMarkerAlt, FaEnvelope, FaInstagram, FaFacebookF, FaTwitter, FaHome, FaShoppingCart, FaUser, FaWhatsapp, FaListUl } from "react-icons/fa"
 import Link from "next/link"
 
 export default function Footer() {
@@ -47,11 +47,20 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer-bottom py-3">
-        <div className="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+        <div className="container d-flex align-items-center justify-content-center text-center">
           <span className="small">© 2026 Hema Bakes. All rights reserved.</span>
-          <span className="small">Baked fresh daily.</span>
         </div>
       </div>
+      <a
+        className="explore-fab"
+        href="/HB%20Menu%20FSSAI.pdf"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Explore menu"
+      >
+        <FaListUl />
+        <span>Menu</span>
+      </a>
       <a
         className="whatsapp-fab"
         href="https://wa.me/919698584991?text=Hello%20Hema%20Bakes%2C%20I%20want%20to%20order%20brownies."
