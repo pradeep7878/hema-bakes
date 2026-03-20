@@ -27,7 +27,7 @@ export default function Footer() {
             <ul className="footer-contact list-unstyled ">
               <li>
                 <FaPhoneAlt className="footer-icon" />
-                <span>+91 96985 84991</span>
+                <a href="tel:+919698584991">+91 96985 84991</a>
               </li>
               <li>
                 <FaMapMarkerAlt className="footer-icon" />
@@ -35,7 +35,7 @@ export default function Footer() {
               </li>
               <li>
                 <FaEnvelope className="footer-icon" />
-                <span>hb.hemabakes@gmail.com</span>
+                <a href="mailto:hb.hemabakes@gmail.com">hb.hemabakes@gmail.com</a>
               </li>
             </ul>
             {/* <div className="footer-social">
