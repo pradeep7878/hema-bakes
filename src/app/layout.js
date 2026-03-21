@@ -43,7 +43,12 @@ const saleha = localFont({
 
 export const metadata = {
   title: "HEMA BAKES",
-  description: "Fresh Homemade Brownies"
+  description: "Fresh Homemade Brownies",
+  icons: {
+    icon: "/images/LG24.png",
+    shortcut: "/images/LG24.png",
+    apple: "/images/LG24.png",
+  },
 }
 
 export default function RootLayout({ children }) {

@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { FaPhoneAlt, FaMapMarkerAlt, FaEnvelope, FaInstagram, FaFacebookF, FaTwitter, FaHome, FaShoppingCart, FaUser, FaWhatsapp, FaListUl } from "react-icons/fa"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function Footer() {
   const [showCallConfirm, setShowCallConfirm] = useState(false)
@@ -45,7 +46,9 @@ export default function Footer() {
       <div className="container pt-5 pb-3">
         <div className="row g-4 align-items-start">
           <div className="col-md-9">
-            <div className="footer-brand brand-font mb-3">HEMA BAKES</div>
+            <div className="footer-brand mb-3">
+              <Image src="/images/lg23.png" alt="Hema Bakes" width={150} height={30} className="footer-logo" />
+            </div>
             <p className="footer-text small">
               Fresh homemade brownies crafted with rich cocoa and premium ingredients.
             </p>

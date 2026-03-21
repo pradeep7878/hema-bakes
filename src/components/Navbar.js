@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { FaShoppingCart } from "react-icons/fa"
 
 export default function Navbar() {
@@ -11,10 +12,8 @@ export default function Navbar() {
 
             <div className="container-fluid">
 
-                <Link href="/" className="navbar-brand text-warning fw-bold brand-font">
-
-                    HEMA BAKES
-
+                <Link href="/" className="navbar-brand py-3">
+                    <Image src="/images/lg23.png" alt="Hema Bakes" width={40} height={30} className="navbar-logo" priority />
                 </Link>
              
 

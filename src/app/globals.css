@@ -148,11 +148,6 @@ body {
   position: relative;
 }
 
-.heart-badge::after {
-  content: "🧡";
-  font-size: 0.9em;
-}
-
 .app-shell {
   min-height: 100vh;
   display: flex;
@@ -165,6 +160,22 @@ body {
 
 .navbar {
   background: #4b2815;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+.navbar-logo {
+  /* object-fit: contain; */
+  /* height: auto;
+  max-height: 48px;
+  width: auto; */
+}
+
+.footer-logo {
+  object-fit: contain;
+  height: auto;
+  max-height: 52px;
+  width: auto;
 }
 
 .navbar a {
@@ -220,28 +231,6 @@ body {
   color: #ffffff;
 }
 
-.hero-menu-btn {
-  position: relative;
-  padding-right: 2.2rem;
-}
-
-.hero-menu-btn::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 0.9rem;
-  transform: translateY(-50%) scale(0.6);
-  opacity: 0;
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
-}
-
-.hero-menu-btn:hover::after {
-  content: "🧡";
-  opacity: 1;
-  transform: translateY(-50%) scale(1);
-}
 
 .hero {
   background:
@@ -251,8 +240,16 @@ body {
       rgba(0, 0, 0, 0.75) 50%,
       rgba(0, 0, 0, 0.85) 100%
     ),
-    url("https://images.pexels.com/photos/33674422/pexels-photo-33674422.jpeg?auto=compress&cs=tinysrgb&w=1800");
-  /* url("https://images.pexels.com/photos/28159488/pexels-photo-28159488.jpeg"); */
+      /* url("https://images.pexels.com/photos/33674422/pexels-photo-33674422.jpeg?auto=compress&cs=tinysrgb&w=1800"); */
+  /* url("https://images.pexels.com/photos/2241838/pexels-photo-2241838.jpeg"); */
+  /* url("https://images.pexels.com/photos/4435690/pexels-photo-4435690.jpeg"); */
+  /* url("https://images.pexels.com/photos/32402906/pexels-photo-32402906.jpeg"); */
+  /* url("https://images.pexels.com/photos/36032863/pexels-photo-36032863.jpeg"); */
+  /* url("https://images.pexels.com/photos/36032863/pexels-photo-36032863.jpeg"); */
+  /* url("https://images.pexels.com/photos/25595974/pexels-photo-25595974.jpeg"); */
+  url("https://i.pinimg.com/1200x/62/da/f3/62daf3a7be12351b07a2219c5882980d.jpg");
+  /* url("https://i.pinimg.com/1200x/06/92/bf/0692bfb38dbd0e2a0e60d751e0037a9b.jpg"); */
+  background-size: cover;
   background-size: cover;
   background-position: center;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -471,9 +468,71 @@ body {
   line-height: 1.65;
 }
 
+.preorder-product-badge {
+  display: inline-block;
+  background: #fff3cd;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 0.92rem;
+  color: #6b3a00;
+  font-weight: 500;
+  margin-top: 4px;
+  font-family: var(--font-noto)
+}
+
+.preorder-product-badge strong {
+  color: #3d1a00;
+  font-weight: 700;
+}
+
+.preorder-steps-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #8b3a00;
+  margin-bottom: 14px;
+}
+
 .preorder-copy {
   color: #4b2815;
   margin-bottom: 8px;
+}
+
+/* Language toggle */
+.lang-toggle-wrap {
+  display: inline-flex;
+  border: 1.5px solid #c8860a;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.lang-toggle-btn {
+  background: transparent;
+  border: none;
+  padding: 5px 16px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #c8860a;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  font-family: var(--font-noto-sans), sans-serif;
+}
+
+.lang-toggle-btn + .lang-toggle-btn {
+  border-left: 1.5px solid #c8860a;
+}
+
+.lang-toggle-btn.active {
+  background: #c8860a;
+  color: #fff;
+}
+
+.lang-content {
+  display: none;
+}
+
+.lang-content.lang-active {
+  display: block;
 }
 
 .preorder-visual {
@@ -509,8 +568,69 @@ body {
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
 }
 
+.preorder-form-heading {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-noto);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #4b2815;
+  margin-bottom: 1.5rem;
+}
+
 .preorder-status {
   color: #4b2815;
+}
+
+.no-preorders-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 auto;
+  padding: 48px 32px;
+  max-width: 480px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #fff8ee 0%, #fdefd6 100%);
+  border: 1.5px solid rgba(180, 110, 20, 0.22);
+  box-shadow:
+    0 4px 24px rgba(160, 90, 10, 0.10),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+}
+
+.no-preorders-gif {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(180, 100, 10, 0.25));
+}
+
+.no-preorders-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #7a4200;
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+.no-preorders-sub {
+  font-size: 0.9rem;
+  color: #a06020;
+  margin: 0;
+  text-align: center;
+}
+
+@media (max-width: 576px) {
+  .no-preorders-card {
+    padding: 36px 20px;
+  }
+  .no-preorders-icon {
+    font-size: 2.4rem;
+  }
+  .no-preorders-title {
+    font-size: 1.05rem;
+  }
 }
 
 .preorder-slots {
@@ -532,7 +652,6 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 1.8rem;
   font-family: var(--font-sans);
@@ -613,35 +732,30 @@ body {
 }
 
 .preorder-table thead {
-  background: transparent;
-  color: #3b2416;
+  background: linear-gradient(135deg, #6b3a2a 0%, #4b2815 100%);
+  color: #fff3e0;
 }
 
 .preorder-table th {
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-size: 0.72rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  color: #fff3e0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .preorder-table td {
   border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.preorder-table tbody tr:nth-child(even) {
-  background: #f3ead9;
-}
-
 .preorder-table tbody tr {
+  background: #f7f2e6;
   transition:
     transform 0.15s ease,
     box-shadow 0.15s ease,
     background 0.15s ease;
-}
-
-.preorder-table tbody tr {
-  background: #f7f2e6;
+  box-shadow: 0 0 10px rgba(180, 100, 30, 0.10), 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .preorder-table tbody tr td {
@@ -656,6 +770,10 @@ body {
 .preorder-table th {
   padding: 14px 16px;
   font-family: var(--font-noto);
+}
+
+.preorder-table td {
+  font-size: 0.82rem;
 }
 
 .preorder-table {
@@ -688,6 +806,11 @@ body {
   100% {
     background-position: 200% 50%;
   }
+}
+
+
+.preorder-table tbody tr.preorder-row-paid td {
+  font-weight: 600;
 }
 
 .preorder-table tbody tr:hover {
@@ -1212,6 +1335,50 @@ h6 {
 .footer-call-modal-text {
   font-size: 0.92rem;
   line-height: 1.6;
+}
+
+/* ── Order confirmed modal ─────────────────────────────── */
+.order-confirm-modal {
+  position: fixed;
+  left: 50vw;
+  top: 50vh;
+  transform: translate(-50%, -50%) scale(0.85);
+  transform-origin: center center;
+  width: min(360px, calc(100vw - 32px));
+  padding: 36px 28px 28px;
+  border-radius: 24px;
+  background: rgba(30, 14, 5, 0.96);
+  backdrop-filter: blur(18px) saturate(1.6);
+  -webkit-backdrop-filter: blur(18px) saturate(1.6);
+  border: 1px solid rgba(255, 220, 140, 0.28);
+  color: #f3e6c7;
+  font-family: "Noto Sans", sans-serif;
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.55),
+    0 0 0 1.5px rgba(255, 220, 140, 0.4),
+    0 0 32px rgba(255, 200, 80, 0.2);
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1002;
+  transition:
+    opacity 0.25s ease,
+    transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1.2);
+}
+
+.order-confirm-modal .footer-call-modal-actions {
+  gap: 14px;
+}
+
+.order-confirm-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.order-confirm-icon {
+  margin-bottom: 12px;
+  line-height: 0;
 }
 
 /* ── Mobile: centre both modals in viewport ─────────────── */

@@ -6,22 +6,24 @@ import products from "@/data.json"
 import { useEffect, useMemo, useRef, useState } from "react"
 import { toast } from "react-toastify"
 import { QRCodeCanvas } from "qrcode.react"
-import { FaMoon, FaStar, FaUsers, FaClock } from "react-icons/fa"
+import { FaMoon, FaStar, FaUsers, FaClock, FaClipboardList } from "react-icons/fa"
 
 const SHEET_URL = "https://script.google.com/macros/s/AKfycbyyWSp1bGe3ZJmis_kak7IvFCJ4nhUUNKtbqc1ckGdfBOy0ZeGL9A2xaZRR8ad_sBZAUA/exec"
 const SHEET_NAME = "ramzan_customers"
 const UPI_ID = "9698584991sbi@ybl"
-const AMOUNT_PAID = 1
+const AMOUNT_PAID = 0
 
 export default function HomePageContent() {
     const [name, setName] = useState("")
     const [phone, setPhone] = useState("")
     const [address, setAddress] = useState("")
     const [showPay, setShowPay] = useState(false)
+    const [instructionLang, setInstructionLang] = useState("en")
     const [saving, setSaving] = useState(false)
-    const [status, setStatus] = useState("")
+    const [showOrderModal, setShowOrderModal] = useState(false)
+    const [showFullModal, setShowFullModal] = useState(false)
     const [preorders, setPreorders] = useState([])
-    const [loadingPreorders, setLoadingPreorders] = useState(false)
+    const [loadingPreorders, setLoadingPreorders] = useState(true)
     const tableRef = useRef(null)
 
     const upiLink = useMemo(() => {
@@ -39,15 +41,14 @@ export default function HomePageContent() {
             toast.error("Invalid phone number", { autoClose: 5000 })
             return
         }
-        if (preorders.length >= 10) {
-            toast.error("Pre‑orders full (10/10)", { autoClose: 5000 })
+        if (preorders.length >= 20) {
+            setShowFullModal(true)
             return
         }
         setShowPay(true)
     }
 
     const saveToSheet = async () => {
-        setStatus("")
         if (!name || !phone || !address) {
             toast.error("Please fill all details", { autoClose: 5000 })
             return
@@ -56,8 +57,8 @@ export default function HomePageContent() {
             toast.error("Invalid phone number", { autoClose: 5000 })
             return
         }
-        if (preorders.length >= 10) {
-            toast.error("Pre‑orders full (10/10)", { autoClose: 5000 })
+        if (preorders.length >= 20) {
+            setShowFullModal(true)
             return
         }
         setSaving(true)
@@ -84,21 +85,19 @@ export default function HomePageContent() {
                 throw new Error(text || `Request failed (${res.status})`)
             }
 
-            setStatus("Saved! Your pre‑order is confirmed.")
-            toast.success("Details saved to sheet", { autoClose: 5000 })
             await loadPreorders()
             setName("")
             setPhone("")
             setAddress("")
             setShowPay(false)
+            setShowOrderModal(true)
             setTimeout(() => {
                 if (tableRef.current) {
                     tableRef.current.scrollIntoView({ behavior: "smooth" })
                 }
             }, 100)
         } catch (e) {
-            setStatus("Could not save. Please try again.")
-            toast.error(e?.message || "Save failed", { autoClose: 5000 })
+            toast.error(e?.message || "Save failed. Please try again.", { autoClose: 5000 })
         } finally {
             setSaving(false)
         }
@@ -117,7 +116,7 @@ export default function HomePageContent() {
                 data = []
             }
             const rows = Array.isArray(data) ? data : []
-            setPreorders(rows.slice(0, 10))
+            setPreorders(rows.slice(0, 3))
         } catch (e) {
             // keep previous table if fetch fails
         } finally {
@@ -174,25 +173,71 @@ export default function HomePageContent() {
 
                     <div className="preorder-premium ">
                         <div className="ramzan-header text-center my-4">
-                        <p className="preorder-kicker mb-5">Reserve your brownie for March 27</p>
-                        <h2 className="preorder-title ramzan-title d-flex align-items-center justify-content-center gap-2 flex-wrap">
-                            <FaMoon className="ramzan-moon" />
-                            Ramzan Pre-Order Offer
-                            <FaStar className="ramzan-star" />
-                        </h2>
+                        <div className="lang-toggle-wrap mb-3">
+                                    <button
+                                        className={`lang-toggle-btn${instructionLang === "en" ? " active" : ""}`}
+                                        onClick={() => setInstructionLang("en")}
+                                    >EN</button>
+                                    <button
+                                        className={`lang-toggle-btn${instructionLang === "ta" ? " active" : ""}`}
+                                        onClick={() => setInstructionLang("ta")}
+                                    >த</button>
+                                </div>
+
+                        <div className={`lang-content${instructionLang === "en" ? " lang-active" : ""}`}>
+                            <p className="preorder-kicker mb-5">Reserve your brownie for March 27</p>
+                        </div>
+                        <div className={`lang-content${instructionLang === "ta" ? " lang-active" : ""}`}>
+                            <p className="preorder-kicker mb-5">மார்ச் 27க்கு உங்கள் பிரவுனியை முன்பதிவு செய்யுங்கள்</p>
+                        </div>
+
+                        <div className={`lang-content${instructionLang === "en" ? " lang-active" : ""}`}>
+                            <h2 className="preorder-title ramzan-title d-flex align-items-center justify-content-center gap-2 flex-wrap">
+                                <FaMoon className="ramzan-moon" />
+                                Ramzan Pre-Order Offer
+                                <FaStar className="ramzan-star" />
+                            </h2>
+                        </div>
+                        <div className={`lang-content${instructionLang === "ta" ? " lang-active" : ""}`}>
+                            <h2 className="preorder-title ramzan-title d-flex align-items-center justify-content-center gap-2 flex-wrap">
+                                <FaMoon className="ramzan-moon" />
+                                ரம்ஜான் முன்பதிவு சலுகை
+                                <FaStar className="ramzan-star" />
+                            </h2>
+                        </div>
                     </div>
                         <div className="row g-4 align-items-center p-0 p-md-5">
                             <div className="col-12 col-lg-7">
 
-                                <p className="preorder-copy mt-5 mt-lg-5">
-                                    Normal brownie price is <strong>₹220</strong>. On <strong>21 March</strong>, the price is
-                                    <strong> ₹180</strong>.
-                                </p>
+                                <div className={`lang-content mt-5 mt-lg-5${instructionLang === "en" ? " lang-active" : ""}`}>
+                                    <p className="preorder-copy mb-3">
+                                        Normal brownie price is <strong>₹220</strong>. On <strong>27 March</strong>, the price is <strong>₹180</strong>.
+                                    </p>
+                                    <p className="preorder-copy mb-3">
+                                        You can pre-order now by paying just <strong>₹1</strong> and pay the remaining
+                                        <span className="heart-badge ms-1">₹143 ❤️</span> on delivery.
+                                    </p>
+                                </div>
+                                <div className={`lang-content mt-5 mt-lg-5${instructionLang === "ta" ? " lang-active" : ""}`}>
+                                    <p className="preorder-copy mb-3">
+                                        சாதாரண பிரவுனி விலை <strong>₹220</strong>. மார்ச் <strong>27</strong> அன்று, விலை <strong>₹180</strong>.
+                                    </p>
+                                    <p className="preorder-copy mb-3">
+                                        நீங்கள் இப்போது வெறும் <strong>₹1</strong> செலுத்தி முன்பதிவு செய்யலாம், மீதமுள்ள
+                                        <span className="heart-badge ms-1">₹143 ❤️</span> டெலிவரியின்போது செலுத்தலாம்.
+                                    </p>
+                                </div>
 
-                                <p className="preorder-copy">
-                                    You can pre-order now by paying just <strong>₹1</strong> and pay the remaining
-                                    <span className="heart-badge ms-1">₹143</span> on delivery.
-                                </p>
+                                <div className={`lang-content${instructionLang === "en" ? " lang-active" : ""}`}>
+                                    <div className="preorder-product-badge">
+                                        🍫 This offer is only for the Classic Fudgy (Plain Brownie) on the menu
+                                    </div>
+                                </div>
+                                <div className={`lang-content${instructionLang === "ta" ? " lang-active" : ""}`}>
+                                    <div className="preorder-product-badge">
+                                        🍫 இந்த சலுகை மெனுவில் உள்ள Classic Fudgy (Plain Brownie) க்கு மட்டுமே
+                                    </div>
+                                </div>
                                 <div className="preorder-visual mt-5">
                                     <div id="preorderCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
                                         <div className="carousel-inner">
@@ -242,8 +287,9 @@ export default function HomePageContent() {
                                 </div>
 
                             </div>
-                            <div className="col-12 col-lg-5">
-                                <div className="preorder-form preorder-form-card">
+                            <div className="col-12 col-lg-5 ">
+                                <div className="preorder-form preorder-form-card mt-5 mt-lg-0 px-4 py-5">
+                                    <h4 className="preorder-form-heading"><FaClipboardList className="me-2" />Pre-Order Form</h4>
                                     <div className="auth-field mb-3">
                                         <input
                                             className="form-control"
@@ -257,8 +303,10 @@ export default function HomePageContent() {
                                         <input
                                             className="form-control"
                                             value={phone}
-                                            onChange={(e) => setPhone(e.target.value)}
+                                            onChange={(e) => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
                                             placeholder=" "
+                                            inputMode="numeric"
+                                            maxLength={10}
                                         />
                                         <label>Phone Number</label>
                                     </div>
@@ -271,8 +319,12 @@ export default function HomePageContent() {
                                         />
                                         <label>Address</label>
                                     </div>
-                                    <button className="btn btn-primary w-100" onClick={startPayment} disabled={saving}>
+                                    {/* <button className="btn btn-primary w-100" onClick={startPayment} disabled={saving}>
                                         Pay ₹{AMOUNT_PAID} Pre‑Order
+                                    </button> */}
+                                    <button className="btn btn-primary w-100 d-flex align-items-center justify-content-center gap-2" onClick={saveToSheet} disabled={saving}>
+                                        {saving && <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>}
+                                        <span>{saving ? "Pre-ordering..." : "Pre-order Now"}</span>
                                     </button>
                                     {showPay && (
                                     <>
@@ -289,18 +341,13 @@ export default function HomePageContent() {
                                         </button>
                                     </>
                                 )}
-                                    {status && (
-                                        <div className={`alert ${status.startsWith("Saved") ? "alert-success" : "alert-danger"} mt-3 mb-0`} role="alert">
-                                            {status}
-                                        </div>
-                                    )}
                                 </div>
                             </div>
                         </div>
 
 
 
-                        {preorders.length > 0 && (
+                        {!loadingPreorders && (
                             <div className="preorder-table-section px-0 px-md-3" ref={tableRef}>
                                 <h3 className="mb-3 text-center preorder-heading">
                                     Pre‑Ordered Customers
@@ -309,39 +356,53 @@ export default function HomePageContent() {
                                     <span className="preorder-clock" aria-hidden="true">
                                         <span className="preorder-needle"></span>
                                     </span>
-                                    Pre‑orders left: <strong>{Math.max(0, 10 - preorders.length)}</strong> / 10
+                                    Pre‑orders left: <strong>{Math.max(0, 20 - preorders.length)}</strong> / 20
                                 </p>
-                                <div className="table-responsive preorder-table">
-                                    <table className="table align-middle">
-                                        <thead>
-                                            <tr>
-                                                <th>S No</th>
-                                                <th>Name</th>
-                                                <th>Mobile</th>
-                                                <th>Address</th>
-                                                <th>Amount Paid</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {preorders.map((row, idx) => (
-                                                <tr key={`${row.phone || row["Mobile number"] || row["Mobile"]}-${idx}`}>
-                                                    <td>{row.sno || row["S No"] || idx + 1}</td>
-                                                    <td>{row.name || row["Name"]}</td>
-                                                    <td>{maskPhone(row.phone || row["Mobile number"] || row["Mobile"])}</td>
-                                                    <td>{maskAddress(row.address || row["Address"])}</td>
-                                                    <td>₹{row.amountPaid || row["Amount paid"] || AMOUNT_PAID}</td>
+                                {preorders.length === 0 ? (
+                                    <div className="no-preorders-card">
+                                        <img
+                                            src="https://media3.giphy.com/media/nrSRWL9TNU3LiSKznp/giphy.gif"
+                                            alt="No pre-orders yet"
+                                            className="no-preorders-gif"
+                                        />
+                                        <p className="no-preorders-title">No Pre-Orders Yet</p>
+                                        <p className="no-preorders-sub">Be the first to reserve your brownie!</p>
+                                    </div>
+                                ) : (
+                                    <div className="table-responsive preorder-table">
+                                        <table className="table align-middle">
+                                            <thead>
+                                                <tr>
+                                                    <th>S No</th>
+                                                    <th>Name</th>
+                                                    <th>Mobile</th>
+                                                    <th>Address</th>
+                                                    <th>Amount Paid</th>
                                                 </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                </div>
+                                            </thead>
+                                            <tbody>
+                                                {preorders.map((row, idx) => {
+                                                    const paid = Number(row.amountPaid ?? row["Amount paid (₹)"] ?? row["Amount paid"] ?? AMOUNT_PAID)
+                                                    return (
+                                                        <tr key={`${row.phone || row["Mobile number"] || row["Mobile"]}-${idx}`} className={paid > 0 ? "preorder-row-paid" : ""}>
+                                                            <td>{idx + 1}</td>
+                                                            <td>{row.name || row["Name"]}</td>
+                                                            <td>{maskPhone(row.phone || row["Mobile number"] || row["Mobile"])}</td>
+                                                            <td>{maskAddress(row.address || row["Address"])}</td>
+                                                            <td>{paid > 0 ? <> ₹{paid}&nbsp;✅</> : <>₹{paid}</>}</td>
+                                                        </tr>
+                                                    )
+                                                })}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                )}
                             </div>
                         )}
 
                         {loadingPreorders && (
                         <div className="preorder-table-section">
                                 <h3 className="mb-3 text-center preorder-heading">
-                                    <FaUsers className="preorder-icon" />
                                     Pre‑Ordered Customers
                                 </h3>
                                 <div className="preorder-placeholder">
@@ -374,6 +435,53 @@ export default function HomePageContent() {
                 </div> */}
 
             </div>
+
+            {showFullModal && (
+                <>
+                    <div className="call-overlay is-open" onClick={() => setShowFullModal(false)} aria-hidden="true" />
+                    <div className="order-confirm-modal is-open" role="dialog" aria-modal="true">
+                        <div className="order-confirm-icon">🍫</div>
+                        <div className="footer-call-modal-title">Pre‑Orders Full!</div>
+                        <div className="footer-call-modal-text">
+                            All 3 slots are booked. Stay tuned for the next batch!
+                        </div>
+                        <div className="footer-call-modal-actions justify-content-center">
+                            <button className="btn btn-primary" onClick={() => setShowFullModal(false)}>
+                                Got it
+                            </button>
+                        </div>
+                    </div>
+                </>
+            )}
+
+            {showOrderModal && (
+                <>
+                    <div className="call-overlay is-open" aria-hidden="true" />
+                    <div className="order-confirm-modal is-open" role="dialog" aria-modal="true">
+                        <div className="order-confirm-icon">
+                            <img src="https://assets-v2.lottiefiles.com/a/a77acbc4-06eb-11f0-b441-d71804b6e6be/bwTAMkzxjM.gif" alt="Order confirmed" width={90} height={90} />
+                        </div>
+                        <div className="footer-call-modal-title">Order Confirmed! 🎉</div>
+                        <div className="footer-call-modal-text mb-3">
+                            Your pre‑order is placed! To confirm it, please pay <strong>₹1</strong> via WhatsApp now.
+                        </div>
+                        <div className="footer-call-modal-actions justify-content-center flex-column gap-2">
+                            <a
+                                className="btn btn-success w-100"
+                                href={`https://wa.me/919698584991?text=${encodeURIComponent("Hi Hema Bakes❤️ I have pre-ordered a Classic Fudgy brownie. I'm ready to pay ₹1 for pre-order confirmation.")}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => setShowOrderModal(false)}
+                            >
+                                Pay ₹1 via WhatsApp
+                            </a>
+                            <button className="btn btn-outline-secondary btn-sm mt-2" onClick={() => setShowOrderModal(false)}>
+                                I'll do it later
+                            </button>
+                        </div>
+                    </div>
+                </>
+            )}
 
         </div>
 
