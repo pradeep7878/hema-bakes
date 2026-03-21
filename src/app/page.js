@@ -146,7 +146,7 @@ export default function HomePageContent() {
             <section className="hero hero-full hero-joined mb-5">
                 <div className="row align-items-center g-4 justify-content-center">
                     <div className="col-12 col-lg-10 hero-content text-center mx-auto">
-                        <p className="hero-eyebrow hero-fade delay-1">Freshly baked • Pure goodness</p>
+                        <p className="hero-eyebrow hero-fade delay-1">HEMA bakes • Pure goodness</p>
                         <h1 className="hero-title hero-fade delay-2">
                             <span className="hero-glow-text" data-text="Elegant Brownies | Rich yet Affordable">
                                 Elegant Brownies | Rich yet Affordable
@@ -169,73 +169,79 @@ export default function HomePageContent() {
 
                 <section className="preorder-note mb-5 ">
 
-                    
+
 
                     <div className="preorder-premium ">
                         <div className="ramzan-header text-center my-4">
-                        <div className="lang-toggle-wrap mb-3">
-                                    <button
-                                        className={`lang-toggle-btn${instructionLang === "en" ? " active" : ""}`}
-                                        onClick={() => setInstructionLang("en")}
-                                    >EN</button>
-                                    <button
-                                        className={`lang-toggle-btn${instructionLang === "ta" ? " active" : ""}`}
-                                        onClick={() => setInstructionLang("ta")}
-                                    >த</button>
-                                </div>
+                            <div className="lang-toggle-wrap mb-4">
+                                <button
+                                    className={`lang-toggle-btn${instructionLang === "en" ? " active" : ""}`}
+                                    onClick={() => setInstructionLang("en")}
+                                >ENGLISH</button>
+                                <button
+                                    className={`lang-toggle-btn${instructionLang === "ta" ? " active" : ""}`}
+                                    onClick={() => setInstructionLang("ta")}
+                                >தமிழ்</button>
+                            </div>
 
-                        <div className={`lang-content${instructionLang === "en" ? " lang-active" : ""}`}>
-                            <p className="preorder-kicker mb-5">Reserve your brownie for March 27</p>
-                        </div>
-                        <div className={`lang-content${instructionLang === "ta" ? " lang-active" : ""}`}>
-                            <p className="preorder-kicker mb-5">மார்ச் 27க்கு உங்கள் பிரவுனியை முன்பதிவு செய்யுங்கள்</p>
-                        </div>
+                            <div className={`lang-content${instructionLang === "en" ? " lang-active" : ""}`}>
+                                <p className="preorder-kicker mb-5">
+                                    PAY ₹1, FEEL THE LOVE (₹143❤️)
+                                </p>
+                            </div>
+                            <div className={`lang-content${instructionLang === "ta" ? " lang-active" : ""}`}>
+                                <p className="preorder-kicker mb-5">
+                                    1 ரூபாய் செலுத்தி, அன்பை உணருங்கள் (₹143❤️)
+                                </p>
+                            </div>
 
-                        <div className={`lang-content${instructionLang === "en" ? " lang-active" : ""}`}>
-                            <h2 className="preorder-title ramzan-title d-flex align-items-center justify-content-center gap-2 flex-wrap">
-                                <FaMoon className="ramzan-moon" />
-                                Ramzan Pre-Order Offer
-                                <FaStar className="ramzan-star" />
-                            </h2>
+                            <div className={`lang-content${instructionLang === "en" ? " lang-active" : ""}`}>
+                                <h2 className="preorder-title ramzan-title d-flex align-items-center justify-content-center gap-2 flex-wrap">
+                                    <span className="ramzan-moon-star">
+                                        <FaMoon className="ramzan-moon" />
+                                        <FaStar className="ramzan-star" />
+                                    </span>
+                                    Ramzan Pre-Order Offer
+                                </h2>
+                            </div>
+                            <div className={`lang-content${instructionLang === "ta" ? " lang-active" : ""}`}>
+                                <h2 className="preorder-title ramzan-title d-flex align-items-center justify-content-center gap-2 flex-wrap">
+                                    <span className="ramzan-moon-star">
+                                        <FaMoon className="ramzan-moon" />
+                                        <FaStar className="ramzan-star" />
+                                    </span>
+                                    ரம்ஜான் முன்பதிவு சலுகை
+                                </h2>
+                            </div>
                         </div>
-                        <div className={`lang-content${instructionLang === "ta" ? " lang-active" : ""}`}>
-                            <h2 className="preorder-title ramzan-title d-flex align-items-center justify-content-center gap-2 flex-wrap">
-                                <FaMoon className="ramzan-moon" />
-                                ரம்ஜான் முன்பதிவு சலுகை
-                                <FaStar className="ramzan-star" />
-                            </h2>
-                        </div>
-                    </div>
                         <div className="row g-4 align-items-center p-0 p-md-5">
                             <div className="col-12 col-lg-7">
 
                                 <div className={`lang-content mt-5 mt-lg-5${instructionLang === "en" ? " lang-active" : ""}`}>
                                     <p className="preorder-copy mb-3">
-                                        Normal brownie price is <strong>₹220</strong>. On <strong>27 March</strong>, the price is <strong>₹180</strong>.
-                                    </p>
-                                    <p className="preorder-copy mb-3">
-                                        You can pre-order now by paying just <strong>₹1</strong> and pay the remaining
-                                        <span className="heart-badge ms-1">₹143 ❤️</span> on delivery.
+                                        The normal brownie price is <strong>₹220.</strong> &nbsp;
+                                        But with this Website <strong className="heart-badge ">(www.hemabakes.com)</strong> launch offer , you can pre-order now by paying just <strong>₹1</strong> and pay the remaining
+                                        <span className="ms-1">₹143 ❤️</span> on delivery.
                                     </p>
                                 </div>
                                 <div className={`lang-content mt-5 mt-lg-5${instructionLang === "ta" ? " lang-active" : ""}`}>
                                     <p className="preorder-copy mb-3">
-                                        சாதாரண பிரவுனி விலை <strong>₹220</strong>. மார்ச் <strong>27</strong> அன்று, விலை <strong>₹180</strong>.
-                                    </p>
-                                    <p className="preorder-copy mb-3">
-                                        நீங்கள் இப்போது வெறும் <strong>₹1</strong> செலுத்தி முன்பதிவு செய்யலாம், மீதமுள்ள
-                                        <span className="heart-badge ms-1">₹143 ❤️</span> டெலிவரியின்போது செலுத்தலாம்.
+                                        சாதாரண ப்ரௌனி விலை <strong>₹220.</strong> &nbsp;
+                                        ஆனால் இந்த வலைத்தளம் <strong className="heart-badge ">(www.hemabakes.com)</strong> தொடக்க சலுகை மூலம், நீங்கள் தற்போது முன்பதிவு செய்து <strong>₹1</strong> மட்டும் செலுத்தி, மீதமுள்ள
+                                        <span className="ms-1">₹143❤️</span> தொகையை டெலிவரி நேரத்தில் செலுத்தலாம்.
                                     </p>
                                 </div>
 
                                 <div className={`lang-content${instructionLang === "en" ? " lang-active" : ""}`}>
                                     <div className="preorder-product-badge">
-                                        🍫 This offer is only for the Classic Fudgy (Plain Brownie) on the menu
+                                        🍫 This offer is valid only for the Classic Fudgy (Plain Brownie) on the menu. <br />
+                                        You can place your pre-order from this Ramzan, March 21, on or before March 27, up to 3PM
                                     </div>
                                 </div>
                                 <div className={`lang-content${instructionLang === "ta" ? " lang-active" : ""}`}>
                                     <div className="preorder-product-badge">
-                                        🍫 இந்த சலுகை மெனுவில் உள்ள Classic Fudgy (Plain Brownie) க்கு மட்டுமே
+                                        🍫 இந்த சலுகை மெனுவில் உள்ள Classic Fudgy (Plain Brownie) க்கே மட்டுமே செல்லுபடியாகும். <br />
+                                        நீங்கள் உங்கள் முன்பதிவை இந்த ரம்ஜான் மார்ச் 21 முதல் மார்ச் 27 வரை, மாலை 3 மணி வரை செய்யலாம்
                                     </div>
                                 </div>
                                 <div className="preorder-visual mt-5">
@@ -327,20 +333,20 @@ export default function HomePageContent() {
                                         <span>{saving ? "Pre-ordering..." : "Pre-order Now"}</span>
                                     </button>
                                     {showPay && (
-                                    <>
-                                        <div className="preorder-qr mt-3">
-                                            <p className="small mb-2">Scan the QR or use your UPI app to pay ₹{AMOUNT_PAID}</p>
-                                            <QRCodeCanvas value={upiLink} size={160} />
-                                        </div>
-                                        <a className="btn btn-primary w-100 mt-3" href={upiLink}>
-                                            Pay in UPI App
-                                        </a>
-                                        <button className="btn btn-primary w-100 mt-3 d-flex align-items-center justify-content-center gap-2" onClick={saveToSheet} disabled={saving}>
-                                            {saving && <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>}
-                                            <span>{saving ? "Saving..." : "I Paid ₹1"}</span>
-                                        </button>
-                                    </>
-                                )}
+                                        <>
+                                            <div className="preorder-qr mt-3">
+                                                <p className="small mb-2">Scan the QR or use your UPI app to pay ₹{AMOUNT_PAID}</p>
+                                                <QRCodeCanvas value={upiLink} size={160} />
+                                            </div>
+                                            <a className="btn btn-primary w-100 mt-3" href={upiLink}>
+                                                Pay in UPI App
+                                            </a>
+                                            <button className="btn btn-primary w-100 mt-3 d-flex align-items-center justify-content-center gap-2" onClick={saveToSheet} disabled={saving}>
+                                                {saving && <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>}
+                                                <span>{saving ? "Saving..." : "I Paid ₹1"}</span>
+                                            </button>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -401,7 +407,7 @@ export default function HomePageContent() {
                         )}
 
                         {loadingPreorders && (
-                        <div className="preorder-table-section">
+                            <div className="preorder-table-section">
                                 <h3 className="mb-3 text-center preorder-heading">
                                     Pre‑Ordered Customers
                                 </h3>

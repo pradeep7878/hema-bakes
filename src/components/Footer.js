@@ -47,7 +47,7 @@ export default function Footer() {
         <div className="row g-4 align-items-start">
           <div className="col-md-9">
             <div className="footer-brand mb-3">
-              <Image src="/images/lg23.png" alt="Hema Bakes" width={150} height={30} className="footer-logo" />
+              <Image src="/images/LG26.png" alt="Hema Bakes" width={60} height={26} className="footer-logo" />
             </div>
             <p className="footer-text small">
               Fresh homemade brownies crafted with rich cocoa and premium ingredients.

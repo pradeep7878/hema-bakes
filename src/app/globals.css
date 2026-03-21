@@ -282,7 +282,7 @@ body {
 .hero-eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  font-size: 0.75rem;
+  font-size: 1rem;
   color: #ffecc2;
   margin-bottom: 1.5rem;
 }
@@ -388,28 +388,46 @@ body {
   }
 }
 
+.ramzan-moon-star {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+}
+
 .ramzan-moon {
   color: #006233;
   font-size: 52px;
   filter: drop-shadow(0 0 6px rgba(0, 98, 51, 0.45));
+  display: block;
 }
 
 .ramzan-star {
   color: #006233;
-  font-size: 34px;
-  margin-top: -16px;
-  filter: drop-shadow(0 0 5px rgba(0, 98, 51, 0.45));
+  font-size: 18px;
+  filter: drop-shadow(0 0 4px rgba(0, 98, 51, 0.6));
+  position: absolute;
+  top: 8px;
+  right: 4px;
 }
 
 @media (max-width: 576px) {
+  .ramzan-moon-star {
+    width: 34px;
+    height: 34px;
+  }
+
   .ramzan-moon {
-    font-size: 28px;
+    font-size: 30px;
     filter: drop-shadow(0 0 4px rgba(0, 98, 51, 0.45));
   }
 
   .ramzan-star {
-    font-size: 18px;
-    margin-top: -10px;
+    font-size: 11px;
+    top: 5px;
+    right: 2px;
     filter: drop-shadow(0 0 3px rgba(0, 98, 51, 0.45));
   }
 }

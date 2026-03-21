@@ -13,7 +13,7 @@ export default function Navbar() {
             <div className="container-fluid">
 
                 <Link href="/" className="navbar-brand py-3">
-                    <Image src="/images/lg23.png" alt="Hema Bakes" width={40} height={30} className="navbar-logo" priority />
+                    <Image src="/images/LG26.png" alt="Hema Bakes" width={80} height={34} className="navbar-logo" priority />
                 </Link>
              
 
