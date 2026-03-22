@@ -116,7 +116,7 @@ export default function HomePageContent() {
                 data = []
             }
             const rows = Array.isArray(data) ? data : []
-            setPreorders(rows.slice(0, 3))
+            setPreorders(rows.slice(0, 20))
         } catch (e) {
             // keep previous table if fetch fails
         } finally {
@@ -146,17 +146,17 @@ export default function HomePageContent() {
             <section className="hero hero-full hero-joined mb-5">
                 <div className="row align-items-center g-4 justify-content-center">
                     <div className="col-12 col-lg-10 hero-content text-center mx-auto">
-                        <p className="hero-eyebrow hero-fade delay-1">HEMA bakes • Pure goodness</p>
-                        <h1 className="hero-title hero-fade delay-2">
-                            <span className="hero-glow-text" data-text="Elegant Brownies | Rich yet Affordable">
-                                Elegant Brownies | Rich yet Affordable
-                            </span>
-                        </h1>
-                        <p className="hero-subtitle hero-fade delay-3">
-                            For Sweet cravings and Happy Smiles
+                        <p className="hero-eyebrow hero-fade delay-1">
+                            <span className="hero-glow-text" data-text="HEMA bakes">HEMA bakes</span>
                         </p>
-                        <div className="d-flex gap-3 mt-4 justify-content-center hero-fade delay-4">
-                            <a className="btn btn-primary hero-menu-btn" href={menuPdfUrl} target="_blank" rel="noreferrer">
+                        <h1 className="hero-title hero-fade delay-2">
+                            Elegant Brownies | Rich yet Affordable
+                        </h1>
+                        {/* <p className="hero-subtitle hero-fade delay-3">
+                            For Sweet cravings and Happy Smiles
+                        </p> */}
+                        <div className="d-flex gap-3 mt-5 justify-content-center hero-fade delay-4">
+                            <a className="btn btn-primary hero-menu-btn px-4" href={menuPdfUrl} target="_blank" rel="noreferrer">
                                 Explore Menu
                             </a>
                             {/* <a className="btn btn-outline-light" href="/cart">View Cart</a> */}
@@ -217,31 +217,52 @@ export default function HomePageContent() {
                         <div className="row g-4 align-items-center p-0 p-md-5">
                             <div className="col-12 col-lg-7">
 
-                                <div className={`lang-content mt-5 mt-lg-5${instructionLang === "en" ? " lang-active" : ""}`}>
+                                {/* English */}
+                                <div className={`lang-content mt-3 mt-lg-3${instructionLang === "en" ? " lang-active" : ""}`}>
                                     <p className="preorder-copy mb-3">
-                                        The normal brownie price is <strong>₹220.</strong> &nbsp;
-                                        But with this Website <strong className="heart-badge ">(www.hemabakes.com)</strong> launch offer , you can pre-order now by paying just <strong>₹1</strong> and pay the remaining
-                                        <span className="ms-1">₹143 ❤️</span> on delivery.
-                                    </p>
-                                </div>
-                                <div className={`lang-content mt-5 mt-lg-5${instructionLang === "ta" ? " lang-active" : ""}`}>
-                                    <p className="preorder-copy mb-3">
-                                        சாதாரண ப்ரௌனி விலை <strong>₹220.</strong> &nbsp;
-                                        ஆனால் இந்த வலைத்தளம் <strong className="heart-badge ">(www.hemabakes.com)</strong> தொடக்க சலுகை மூலம், நீங்கள் தற்போது முன்பதிவு செய்து <strong>₹1</strong> மட்டும் செலுத்தி, மீதமுள்ள
-                                        <span className="ms-1">₹143❤️</span> தொகையை டெலிவரி நேரத்தில் செலுத்தலாம்.
+                                        &nbsp;The normal brownie price is <strong>₹220.</strong>{" "}
+                                        But with this Website{" "}
+                                        <strong className="heart-badge website-text">(www.hemabakes.com)</strong>{" "}
+                                        launch offer, you can either pre-order by paying just <strong>₹1</strong> and pay the remaining
+                                        <span className="ms-1">₹142</span> on delivery, or pay the full <strong>₹143</strong> at once.
                                     </p>
                                 </div>
 
+                                {/* Tamil */}
+                                <div className={`lang-content mt-3 mt-lg-3${instructionLang === "ta" ? " lang-active" : ""}`}>
+                                    <p className="preorder-copy mb-3">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;இந்த Brownie-யின் சாதாரண விலை <strong>₹220.</strong>{" "}
+                                        ஆனால் இந்த Website{" "}
+                                        <strong className="heart-badge website-text">(www.hemabakes.com)</strong>{" "}
+                                        launch offer மூலம், நீங்கள் <strong>₹1</strong> மட்டும் செலுத்தி pre-order செய்யலாம், மீதமுள்ள
+                                        <span className="ms-1">₹142</span> தொகையை delivery போது செலுத்தலாம், அல்லது முழு <strong>₹143</strong> தொகையையும் ஒரே முறையில் செலுத்தலாம்.
+                                    </p>
+                                </div>
+
+                                {/* English */}
                                 <div className={`lang-content${instructionLang === "en" ? " lang-active" : ""}`}>
-                                    <div className="preorder-product-badge">
-                                        🍫 This offer is valid only for the Classic Fudgy (Plain Brownie) on the menu. <br />
-                                        You can place your pre-order from this Ramzan, March 21, on or before March 27, up to 3PM
+                                    <div className="preorder-product-badge p-3">
+                                        <p className="offer-date-heading mb-3 fw-bold text-center">
+                                            📅 Offer Valid: March 21 – March 31
+                                        </p>
+                                        <p>
+                                            This offer is valid only for the Classic Fudgy (Plain Brownie) on the menu. <br />
+                                            You can place your pre-order from this Ramzan, March 21 to March 31.
+                                        </p>
                                     </div>
                                 </div>
+
+                                {/* Tamil */}
                                 <div className={`lang-content${instructionLang === "ta" ? " lang-active" : ""}`}>
-                                    <div className="preorder-product-badge">
-                                        🍫 இந்த சலுகை மெனுவில் உள்ள Classic Fudgy (Plain Brownie) க்கே மட்டுமே செல்லுபடியாகும். <br />
-                                        நீங்கள் உங்கள் முன்பதிவை இந்த ரம்ஜான் மார்ச் 21 முதல் மார்ச் 27 வரை, மாலை 3 மணி வரை செய்யலாம்
+                                    <div className="preorder-product-badge p-3">
+                                        <p className="offer-date-heading mb-3 fw-bold text-center">
+                                            📅 சலுகை செல்லுபடியாகும் நாட்கள்: மார்ச் 21 – மார்ச் 31
+                                        </p>
+
+                                        <p>
+                                            &nbsp; &nbsp;இந்த சலுகை மெனுவில் உள்ள Classic Fudgy (Plain Brownie) க்கு மட்டும் செல்லுபடியாகும். <br />
+                                            இந்த ரம்ஜான் காலத்தில், மார்ச் 21 முதல் மார்ச் 31 வரை நீங்கள் முன்பதிவு செய்யலாம்.
+                                        </p>
                                     </div>
                                 </div>
                                 <div className="preorder-visual mt-5">
@@ -467,19 +488,19 @@ export default function HomePageContent() {
                         <div className="order-confirm-icon">
                             <img src="https://assets-v2.lottiefiles.com/a/a77acbc4-06eb-11f0-b441-d71804b6e6be/bwTAMkzxjM.gif" alt="Order confirmed" width={90} height={90} />
                         </div>
-                        <div className="footer-call-modal-title">Order Confirmed! 🎉</div>
-                        <div className="footer-call-modal-text mb-3">
-                            Your pre‑order is placed! To confirm it, please pay <strong>₹1</strong> via WhatsApp now.
+                        {/* <div className="footer-call-modal-title">Order Confirmed! 🎉</div> */}
+                        <div className="footer-call-modal-title mb-3">
+                            Pre-order placed! Pay <strong>₹1</strong> or more via WhatsApp to confirm.
                         </div>
-                        <div className="footer-call-modal-actions justify-content-center flex-column gap-2">
+                        <div className="footer-call-modal-actions justify-content-center flex-column gap-2 ">
                             <a
-                                className="btn btn-success w-100"
-                                href={`https://wa.me/919698584991?text=${encodeURIComponent("Hi Hema Bakes❤️ I have pre-ordered a Classic Fudgy brownie. I'm ready to pay ₹1 for pre-order confirmation.")}`}
+                                className="btn btn-success w-75"
+                                href={`https://wa.me/919698584991?text=${encodeURIComponent("Hi Hema Bakes❤️ I have pre-ordered a Classic Fudgy brownie. I'm ready to pay ₹1 or more for pre-order confirmation.")}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={() => setShowOrderModal(false)}
                             >
-                                Pay ₹1 via WhatsApp
+                                Open WhatsApp
                             </a>
                             <button className="btn btn-outline-secondary btn-sm mt-2" onClick={() => setShowOrderModal(false)}>
                                 I'll do it later

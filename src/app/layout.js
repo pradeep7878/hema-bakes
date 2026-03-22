@@ -42,7 +42,7 @@ const saleha = localFont({
 })
 
 export const metadata = {
-  title: "HEMA BAKES",
+  title: "Hema Bakes",
   description: "Fresh Homemade Brownies",
   icons: {
     icon: "/images/LG24.png",

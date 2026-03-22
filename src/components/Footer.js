@@ -192,7 +192,7 @@ export default function Footer() {
           <div className="footer-call-modal-actions">
             <a
               className="btn btn-primary"
-              href="https://wa.me/919698584991?text=Hello%20Hema%20Bakes%2C%20I%20want%20to%20order%20brownies."
+              href="https://wa.me/919698584991?text=Hello%20Hema%20Bakes..%2C%20I%20want%20to%20order%20brownies."
               target="_blank"
               rel="noreferrer"
               onClick={() => setShowWaConfirm(false)}
