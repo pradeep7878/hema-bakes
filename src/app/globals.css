@@ -379,6 +379,11 @@ body {
   animation: heroGlowSweep 5s ease-in-out infinite;
 }
 
+/* Hide sweep overlay when browser auto-translates the page */
+html[class*="translated"] .hero-glow-text::after {
+  display: none;
+}
+
 @keyframes heroGlowSweep {
   0% {
     background-position: -60% 50%;
