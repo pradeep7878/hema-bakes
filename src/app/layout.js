@@ -5,6 +5,7 @@ import localFont from 'next/font/local'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Providers from '@/components/Providers'
+import Script from "next/script";
 
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
@@ -45,9 +46,9 @@ export const metadata = {
   title: "Hema Bakes",
   description: "Fresh Homemade Brownies",
   icons: {
-    icon: "/images/LG24.png",
-    shortcut: "/images/LG24.png",
-    apple: "/images/LG24.png",
+    icon: "/images/for-tab-icon.png",
+    shortcut: "/images/for-tab-icon.png",
+    apple: "/images/for-tab-icon.png",
   },
 }
 
@@ -55,6 +56,21 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-QS22E4C8MY"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+            {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', 'G-QS22E4C8MY');
+        `}
+        </Script>
+      </head>
       <body className={`${manrope.variable} ${cormorantGaramond.variable} ${marhey.variable} ${notoSans.variable} ${saleha.variable}`}>
         <div className="bg-hearts" aria-hidden="true">
           <span className="bg-heart heart-1"></span>

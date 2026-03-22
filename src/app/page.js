@@ -467,10 +467,9 @@ export default function HomePageContent() {
                 <>
                     <div className="call-overlay is-open" onClick={() => setShowFullModal(false)} aria-hidden="true" />
                     <div className="order-confirm-modal is-open" role="dialog" aria-modal="true">
-                        <div className="order-confirm-icon">🍫</div>
-                        <div className="footer-call-modal-title">Pre‑Orders Full!</div>
+                        <div className="footer-call-modal-title">⚠️ Pre‑Orders Full </div>
                         <div className="footer-call-modal-text">
-                            All 3 slots are booked. Stay tuned for the next batch!
+                            Fully booked! Don’t miss the next drop!
                         </div>
                         <div className="footer-call-modal-actions justify-content-center">
                             <button className="btn btn-primary" onClick={() => setShowFullModal(false)}>
